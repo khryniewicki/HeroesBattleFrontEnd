@@ -1,0 +1,31 @@
+<mat-sidenav-container class="sidenav-container ">
+  <mat-sidenav #drawer class="sidenav" fixedInViewport="true" position="end"
+               [mode]="'over'">
+    <mat-toolbar>Menu</mat-toolbar>
+    <mat-nav-list>
+      <a mat-list-item class=" active" routerLink="game">ABOUT GAME</a>
+      <a mat-list-item class=" disabled" routerLink="server">ABOUT SERVER</a>
+      <a mat-list-item class=" disabled" routerLink="web">ABOUT WEB-PAGE</a>
+      <a mat-list-item class=" disabled" routerLink="log-in">LOG IN</a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar class="shadowBox bg-dark text-white ">
+      <a class="navbar-brand" href="#"> <img src="/assets/icons/logo7.png" id="logo"
+                                             class="d-inline-block align-bottom" alt="">
+      </a>
+      <span class="spacer"></span>
+      <div class="main-bar ">
+        <a mat-list-item class=" active" routerLink="game">ABOUT GAME</a>
+        <a mat-list-item class=" disabled" routerLink="server">ABOUT SERVER</a>
+        <a mat-list-item class=" disabled" routerLink="web">ABOUT WEB-PAGE</a>
+        <a mat-list-item class=" disabled" routerLink="log-in">LOG IN</a>
+      </div>
+      <button class="hamburgerButton " type="button" aria-label="Toggle sidenav"
+              mat-icon-button (click)="drawer.toggle()">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+    </mat-toolbar>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>
