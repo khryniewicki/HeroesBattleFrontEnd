@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {NavigationEnd, Router} from '@angular/router';
 
 @Component({
@@ -9,7 +9,8 @@ import {NavigationEnd, Router} from '@angular/router';
 export class AppComponent {
   title = 'HeroesBattleFrontEnd';
   mySubscription;
-  constructor(private router: Router) {
+
+  constructor(private router: Router){
     this.mySubscription = this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
         // Trick the Router into believing it's last link wasn't previously loaded
@@ -18,5 +19,4 @@ export class AppComponent {
     });
 
   }
-
 }

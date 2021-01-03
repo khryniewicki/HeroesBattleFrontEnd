@@ -13,6 +13,12 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {RouterModule} from '@angular/router';
 import {MatIconModule} from '@angular/material/icon';
 import {AppRoutingModule, routingComponents} from './app-routing.module';
+import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
+import {HttpClient, HttpClientModule} from '@angular/common/http';
+import {TranslateHttpLoader} from '@ngx-translate/http-loader';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import {FormsModule} from '@angular/forms';
+export const materialComponents = [MatListModule, MatButtonModule, MatIconModule, MatSidenavModule, MatToolbarModule];
 
 @NgModule({
   declarations: [
@@ -23,16 +29,28 @@ import {AppRoutingModule, routingComponents} from './app-routing.module';
   imports: [
     BrowserModule,
     ServiceWorkerModule.register('ngsw-worker.js', {enabled: environment.production}),
-    MatButtonModule,
     BrowserAnimationsModule,
-    MatListModule,
-    MatSidenavModule,
-    MatToolbarModule,
+    materialComponents,
     RouterModule,
-    MatIconModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: httpTranslateLoader,
+        deps: [HttpClient]
+      }
+    }),
+    MatSlideToggleModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}
+
+// tslint:disable-next-line:typedef
+export function httpTranslateLoader(http: HttpClient) {
+  return new TranslateHttpLoader(http);
+}

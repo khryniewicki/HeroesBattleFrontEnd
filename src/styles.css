@@ -26,18 +26,27 @@ mat-toolbar a {
   display: inline-block;
   text-decoration: none;
   color: white;
-  margin: 0px 10px;
+  margin: 0 10px;
 }
-
+.upper-nav{
+  width: 100%;
+  padding-top: 10px;
+  padding-bottom: 0;
+  height: 35px;
+  max-height: 35px!important;
+  margin: 0;
+}
 mat-toolbar {
   background-color: #FFFFFF;
-  padding-top: 10px !important;
   padding-bottom: 0 !important;
   height: auto !important;
 }
 
 .spacer {
   flex: 1 1 auto;
+}
+.lang{
+  float: right;
 }
 
 @media (min-width: 1080px) {
@@ -59,7 +68,7 @@ mat-toolbar {
     font-size: 2px;
   }
   #logo {
-    width: 200px!important;
+    width: 120px!important;
     height: 100%!important;
   }
 }
@@ -77,9 +86,11 @@ mat-toolbar {
     width: 100px!important;
   }
 }
+
 #logo {
-  width: 120px;
+  width: 200px;
   height: 100%;
+  margin-top: -30px;
 }
 /* Small devices (tablets, 768px and up) */
 @media (min-width: 768px) {
