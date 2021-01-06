@@ -9,8 +9,8 @@ import {MatSlideToggleChange} from '@angular/material/slide-toggle';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent {
-  isChecked: any;
-  private lang: string;
+  isChecked: boolean;
+  lang: string;
 
   constructor(private breakpointObserver: BreakpointObserver, public translate: TranslateService) {
     translate.addLangs(['en', 'pl']);

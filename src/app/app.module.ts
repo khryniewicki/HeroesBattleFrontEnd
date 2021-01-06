@@ -18,7 +18,9 @@ import {HttpClient, HttpClientModule} from '@angular/common/http';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {FormsModule} from '@angular/forms';
-export const materialComponents = [MatListModule, MatButtonModule, MatIconModule, MatSidenavModule, MatToolbarModule];
+import {MatGridListModule} from '@angular/material/grid-list';
+export const materialComponents = [MatListModule, MatButtonModule, MatIconModule, MatSidenavModule, MatToolbarModule, MatSlideToggleModule,
+  FormsModule, MatGridListModule];
 
 @NgModule({
   declarations: [
@@ -26,24 +28,22 @@ export const materialComponents = [MatListModule, MatButtonModule, MatIconModule
     NavbarComponent,
     routingComponents
   ],
-  imports: [
-    BrowserModule,
-    ServiceWorkerModule.register('ngsw-worker.js', {enabled: environment.production}),
-    BrowserAnimationsModule,
-    materialComponents,
-    RouterModule,
-    AppRoutingModule,
-    HttpClientModule,
-    TranslateModule.forRoot({
-      loader: {
-        provide: TranslateLoader,
-        useFactory: httpTranslateLoader,
-        deps: [HttpClient]
-      }
-    }),
-    MatSlideToggleModule,
-    FormsModule
-  ],
+    imports: [
+        BrowserModule,
+        ServiceWorkerModule.register('ngsw-worker.js', {enabled: environment.production}),
+        BrowserAnimationsModule,
+        materialComponents,
+        RouterModule,
+        AppRoutingModule,
+        HttpClientModule,
+        TranslateModule.forRoot({
+            loader: {
+                provide: TranslateLoader,
+                useFactory: httpTranslateLoader,
+                deps: [HttpClient]
+            }
+        }),
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })

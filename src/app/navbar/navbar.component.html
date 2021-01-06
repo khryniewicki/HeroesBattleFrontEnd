@@ -9,12 +9,13 @@
       <a mat-list-item class=" disabled" routerLink="log-in">{{'Log-in' | translate}}</a>
     </mat-nav-list>
   </mat-sidenav>
-  <mat-sidenav-content >
+  <mat-sidenav-content>
 
     <div class="bg-dark upper-nav ">
       <span class="lang form-inline px-3 ">
   <mat-slide-toggle class=" bg-dark text-light" [(ngModel)]="isChecked"
-                    (change)="switchLang($event)">{{lang}}</mat-slide-toggle>
+                    (change)="switchLang($event)">{{lang}}
+  </mat-slide-toggle>
       </span>
     </div>
     <mat-toolbar class="shadowBox  bg-dark text-white ">

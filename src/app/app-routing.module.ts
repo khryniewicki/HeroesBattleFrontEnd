@@ -10,7 +10,6 @@ const routes: Routes = [
   {path: 'server', component: ServerComponent},
   {path: 'web', component: WebComponent},
   {path: 'log-in', component: LoggingComponent},
-
 ];
 
 
