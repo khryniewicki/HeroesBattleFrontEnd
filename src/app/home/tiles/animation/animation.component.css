@@ -17,14 +17,14 @@
 
 .hide_tile1 {
   position: relative;
-  height: 400px;
+  height: 200px;
   opacity: 0;
-  transform: translateY(-400px);
+  transform: translateY(-200px);
   transition: all 2s linear;
   overflow: hidden;
 }
 
 .show_tile1 {
-  height: 400px;
+  height: 200px;
   transition: all 2s linear;
 }
