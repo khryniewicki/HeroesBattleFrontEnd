@@ -1,0 +1,19 @@
+
+.mat-grid-tile {
+  border: solid 2px #000 !important;
+}
+.lwjgl{
+  width: 356px;
+  height: 142px;
+  top:10%;
+  left: 5%;
+  position: absolute;
+}
+.java{
+  width: 347px;
+  height: 358px;
+  bottom:10%;
+  left: 25%;
+  position: absolute;
+}
+.dark-card{}
