@@ -1,0 +1,30 @@
+.animation {
+  left: 10%;
+  background: transparent;
+}
+
+.card_gif {
+  top: 20%;
+  width: 80%;
+  height: 150px;
+  left: 10%;
+  background: rgba(0, 0, 0, 0.8);
+}
+
+.tile {
+  z-index: 1;
+}
+
+.hide_tile1 {
+  position: relative;
+  height: 400px;
+  opacity: 0;
+  transform: translateY(-400px);
+  transition: all 2s linear;
+  overflow: hidden;
+}
+
+.show_tile1 {
+  height: 400px;
+  transition: all 2s linear;
+}

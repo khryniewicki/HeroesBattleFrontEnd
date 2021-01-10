@@ -1,35 +1,37 @@
-<mat-sidenav-container class="sidenav-container ">
+<mat-sidenav-container class="sidenav-container background_black">
   <mat-sidenav #drawer class="sidenav" fixedInViewport="true" position="end"
                [mode]="'over'">
     <mat-toolbar>Menu</mat-toolbar>
     <mat-nav-list>
+      <a mat-list-item class=" active" routerLink="">{{'HomePage' | translate}}</a>
       <a mat-list-item class=" active" routerLink="game">{{'GamePage' | translate}}</a>
       <a mat-list-item class=" disabled" routerLink="server">{{'ServerPage' | translate}}</a>
       <a mat-list-item class=" disabled" routerLink="web">{{'WebPage' | translate}}</a>
-      <a mat-list-item class=" disabled" routerLink="log-in">{{'Log-in' | translate}}</a>
+      <a mat-list-item class=" disabled" routerLink="login">{{'Log-in' | translate}}</a>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
 
-    <div class="bg-dark upper-nav ">
+    <div class=" upper-nav ">
       <span class="lang form-inline px-3 ">
-  <mat-slide-toggle class=" bg-dark text-light" [(ngModel)]="isChecked"
+  <mat-slide-toggle class="  text-light" [(ngModel)]="isChecked"
                     (change)="switchLang($event)">{{lang}}
   </mat-slide-toggle>
       </span>
     </div>
-    <mat-toolbar class="shadowBox  bg-dark text-white ">
-      <div class="bg-dark form-inline ">
-        <a class="navbar-brand " href="#"> <img src="/assets/icons/logo7.png" id="logo"
+    <mat-toolbar class="shadowBox  background_black text-white ">
+      <ng-container class=" navbar-container ">
+        <a class="navbar-brand " href=""> <img src="src/assets/icons/logo7.png" id="logo"
                                                 class="d-inline-block align-bottom" alt="">
         </a>
-      </div>
+      </ng-container>
       <span class="spacer"></span>
       <div class="main-bar ">
+        <a mat-list-item class=" active" routerLink="">{{'HomePage' | translate}}</a>
         <a mat-list-item class=" active" routerLink="game">{{'GamePage' | translate}}</a>
         <a mat-list-item class=" disabled" routerLink="server">{{'ServerPage' | translate}}</a>
         <a mat-list-item class=" disabled" routerLink="web">{{'WebPage' | translate}}</a>
-        <a mat-list-item class=" disabled" routerLink="log-in">{{'Log-in' | translate}}</a>
+        <a mat-list-item class=" disabled" routerLink="login">{{'Log-in' | translate}}</a>
       </div>
       <button class="hamburgerButton " type="button" aria-label="Toggle sidenav"
               mat-icon-button (click)="drawer.toggle()">

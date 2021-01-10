@@ -1,6 +1,13 @@
 {
+  "HomePage" : "HOME",
   "GamePage": "ABOUT GAME ",
   "ServerPage": "ABOUT SERVER",
   "WebPage": "ABOUT WEB-PAGE",
-  "Log-in" : "LOG IN"
+  "Log-in" : "LOG IN",
+  "bubble_subtitles" : "Online game designed for two players who select one of six heroes and fight to the loss of their lives. The combat area is covered with obstacles that make it difficult to escape ...",
+  "button_download" : "DOWNLOAD",
+  "Game_mage_title": "Mages",
+  "Game_mage_description": "Gifted wizards, each of them wields a different element. The Mages are endowed with a lot of mana and regenerate it quickly, but they have little health, so they have to beware of hostile spells.",
+  "Game_fallen_title": "Fallens",
+  "Game_fallen_description": "A group of rebels who are not afraid of magic. The Fallens are warriors who have a lot of life and mana. But they must hurry to defeat the enemy, because when they deplete their mana, they will regain it very slowly."
 }

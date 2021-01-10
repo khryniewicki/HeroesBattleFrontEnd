@@ -1,0 +1,92 @@
+<div class="container-fluid py-1  px-0 m-0 background_black" id="start">
+  <mat-grid-list cols="4" rowHeight="200px">
+    <mat-grid-tile *ngFor="let tile of tiles; index as i"
+                   [colspan]="tile.cols"
+                   [rowspan]="tile.rows"
+                   [style.background]="tile.color"
+                   [style.background-image]="tile.bg"
+                   [attr.id]="'tile_'+i"
+                   [ngClass]="tile.class">
+      <ng-container *ngIf="i==0">
+        <vg-player [style.background-image]=tile.bg>
+          <vg-controls style="max-width: 70%;  left: 14.95%; ">
+            <vg-play-pause></vg-play-pause>
+            <vg-playback-button></vg-playback-button>
+
+            <vg-time-display vgProperty="current" vgFormat="mm:ss"></vg-time-display>
+
+            <vg-scrub-bar>
+              <vg-scrub-bar-current-time></vg-scrub-bar-current-time>
+              <vg-scrub-bar-buffering-time></vg-scrub-bar-buffering-time>
+            </vg-scrub-bar>
+
+            <vg-time-display vgProperty="total" vgFormat="mm:ss"></vg-time-display>
+
+            <vg-mute></vg-mute>
+            <vg-volume></vg-volume>
+
+            <vg-fullscreen></vg-fullscreen>
+          </vg-controls>
+
+          <video #media [vgMedia]="media" id="singleVideo" preload="auto" crossorigin>
+            <source src="src/assets/video/intro.mp4" type="video/mp4">
+          </video>
+        </vg-player>
+        <div class="first_tile_text position1">
+          <div>
+            <p class="title"> Heroes Battle </p>
+            <h3 class="sub-text">{{'bubble_subtitles' | translate}} </h3>
+            <br>
+            <button mat-raised-button class=" btn_download"
+                    routerLink="login"> {{'button_download' | translate}} </button>
+          </div>
+        </div>
+      </ng-container>
+
+      <ng-container *ngIf="i==1">
+        <div class="px-3 ">
+          <img class="img_hero img_mage " src="{{'/assets/img/'+mage+'.png'}}" alt="mage">
+
+          <div class="title_group">
+
+            <p class="title2 d-inline"> {{'Game_mage_title' | translate}} </p>
+            <span class="spacer2"></span>
+            <mat-button-toggle-group name="fontStyle" aria-label="Font Style">
+              <mat-button-toggle class="btn-hero " (click)="edit('fire_wizard')">Fire Mage</mat-button-toggle>
+              <mat-button-toggle class="btn-hero" (click)="edit('ice_wizard')">Ice Mage</mat-button-toggle>
+              <mat-button-toggle class="btn-hero" (click)="edit('thunder_wizard')">Thunder Mage</mat-button-toggle>
+            </mat-button-toggle-group>
+          </div>
+
+          <h4 class="sub-text position2"> {{'Game_mage_description' | translate}}</h4>
+
+          <button mat-raised-button class=" btn_animation"
+                  (click)="animate(i);"> {{!mageAnimationActive ? 'Show animation' : 'Hide animation'}}</button>
+        </div>
+      </ng-container>
+
+      <ng-container *ngIf="i==2">
+        <div class="px-3 ">
+          <img class="img_hero img_fallen" src="{{'/assets/img/'+fallen+'.png'}}" alt="fallen">
+
+          <div class="title_group">
+            <p class="title2 d-inline"> {{'Game_fallen_title' | translate}} </p>
+            <span class="spacer2"></span>
+            <mat-button-toggle-group class="position2 " name="fontStyle" aria-label="Font Style">
+              <mat-button-toggle class="btn-hero " (click)="edit2('fallen_king')">Fallen King</mat-button-toggle>
+              <mat-button-toggle class="btn-hero" (click)="edit2('fallen_monk')">Fallen Monk</mat-button-toggle>
+              <mat-button-toggle class="btn-hero" (click)="edit2('fallen_witcher')">Fallen Witcher</mat-button-toggle>
+            </mat-button-toggle-group>
+          </div>
+
+          <h4 class="sub-text position2"> {{'Game_fallen_description' | translate}}</h4>
+          <button mat-raised-button class=" btn_animation"
+                  (click)="animate(i);"> {{!fallenAnimationActive ? 'Show animation' : 'Hide animation'}}</button>
+        </div>
+      </ng-container>
+    </mat-grid-tile>
+  </mat-grid-list>
+  <div id="animation_wrapper">
+    <div id="parent" #parent></div>
+  </div>
+</div>

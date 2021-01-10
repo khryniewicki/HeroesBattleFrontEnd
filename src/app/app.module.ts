@@ -19,33 +19,45 @@ import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {FormsModule} from '@angular/forms';
 import {MatGridListModule} from '@angular/material/grid-list';
+import {VgCoreModule} from '@videogular/ngx-videogular/core';
+import {VgControlsModule} from '@videogular/ngx-videogular/controls';
+import {MatButtonToggleModule} from '@angular/material/button-toggle';
+import {GameComponent} from './game/game.component';
+import {MatCardModule} from '@angular/material/card';
+import {AnimationComponent} from './home/tiles/animation/animation.component';
+
 export const materialComponents = [MatListModule, MatButtonModule, MatIconModule, MatSidenavModule, MatToolbarModule, MatSlideToggleModule,
-  FormsModule, MatGridListModule];
+  FormsModule, MatGridListModule, MatButtonToggleModule, MatCardModule];
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
-    routingComponents
+    routingComponents,
+    GameComponent, AnimationComponent
   ],
-    imports: [
-        BrowserModule,
-        ServiceWorkerModule.register('ngsw-worker.js', {enabled: environment.production}),
-        BrowserAnimationsModule,
-        materialComponents,
-        RouterModule,
-        AppRoutingModule,
-        HttpClientModule,
-        TranslateModule.forRoot({
-            loader: {
-                provide: TranslateLoader,
-                useFactory: httpTranslateLoader,
-                deps: [HttpClient]
-            }
-        }),
-    ],
+  imports: [
+    BrowserModule,
+    ServiceWorkerModule.register('ngsw-worker.js', {enabled: environment.production}),
+    BrowserAnimationsModule,
+    materialComponents,
+    RouterModule,
+    AppRoutingModule,
+    HttpClientModule,
+    VgCoreModule,
+    VgControlsModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: httpTranslateLoader,
+        deps: [HttpClient]
+      }
+    }),
+
+  ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [AnimationComponent]
 })
 export class AppModule {
 }

@@ -1,12 +1,14 @@
 html, body {
   height: 100%;
+  font-family: 'Spicy Rice', cursive;
+
 }
 
 .shadowBox {
   background-color: #FFFFFF;
-  -moz-box-shadow: inset 0 -5px 8px -6px rgba(143, 136, 143, 1);
-  -webkit-box-shadow: inset 0 -5px 8px -6px rgba(143, 136, 143, 1);
-  box-shadow: inset 0 -5px 8px -6px rgba(143, 136, 143, 1);
+  -moz-box-shadow: inset 0 -5px 4px -6px rgba(143, 136, 143, 1);
+  -webkit-box-shadow: inset 0 -5px 4px -6px rgba(143, 136, 143, 1);
+  box-shadow: inset 0 -5px 4px -6px rgba(143, 136, 143, 1);
 }
 
 mat-sidenav-container {
@@ -16,7 +18,10 @@ mat-sidenav-container {
 .sidenav-container {
   height: 100%;
 }
+.background_black{
+  background: black;
 
+}
 .sidenav {
   width: 200px;
   box-shadow: 3px 0 6px rgba(0, 0, 0, .24);
@@ -86,11 +91,13 @@ mat-toolbar {
     width: 100px!important;
   }
 }
-
+.navbar-brand{
+}
 #logo {
   width: 200px;
   height: 100%;
   margin-top: -30px;
+
 }
 /* Small devices (tablets, 768px and up) */
 @media (min-width: 768px) {

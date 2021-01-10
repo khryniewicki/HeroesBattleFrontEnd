@@ -1,15 +1,17 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
-import {GameComponent} from './game/game.component';
+import {HomeComponent} from './home/home.component';
 import {ServerComponent} from './server/server.component';
 import {WebComponent} from './web/web.component';
 import {LoggingComponent} from './logging/logging.component';
+import {GameComponent} from './game/game.component';
 
 const routes: Routes = [
+  {path: '', component: HomeComponent},
   {path: 'game', component: GameComponent},
   {path: 'server', component: ServerComponent},
   {path: 'web', component: WebComponent},
-  {path: 'log-in', component: LoggingComponent},
+  {path: 'login', component: LoggingComponent},
 ];
 
 
@@ -20,4 +22,4 @@ const routes: Routes = [
 })
 export class AppRoutingModule {
 }
-export const routingComponents = [GameComponent, ServerComponent, WebComponent, LoggingComponent];
+export const routingComponents = [HomeComponent, GameComponent, ServerComponent, WebComponent, LoggingComponent];
