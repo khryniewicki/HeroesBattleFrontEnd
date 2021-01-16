@@ -9,6 +9,7 @@ html, body {
 // Light theme
 $light-primary: mat-palette($mat-indigo);
 $light-accent:  mat-palette($mat-pink, A200, A100, A400);
+$light-warn:    mat-palette($mat-deep-orange);
 $light-theme:   mat-light-theme($light-primary, $light-accent);
 
 // Dark theme
@@ -26,11 +27,21 @@ $angular-dark-theme: mat-dark-theme(
       ),
     )
 );
-
+$angular-light-theme: mat-dark-theme(
+    (
+      color: (
+        primary: $light-primary,
+        accent: $light-accent,
+        warn: $light-warn,
+      ),
+    )
+);
 .dark-theme {
   @include angular-material-color($angular-dark-theme);
 }
-
+.light-theme {
+  @include angular-material-color($angular-light-theme);
+}
 .shadowBox {
   background-color: #FFFFFF;
   -moz-box-shadow: inset 0 -5px 4px -6px rgba(143, 136, 143, 1);

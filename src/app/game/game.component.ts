@@ -1,5 +1,5 @@
 
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {Tile} from '../home/home.component';
 
 @Component({
@@ -8,6 +8,8 @@ import {Tile} from '../home/home.component';
   styleUrls: ['./game.component.scss']
 })
 export class GameComponent implements OnInit {
+  encapsulation: ViewEncapsulation.None
+
   bubbles7 = 'assets/bg/bubbles7.png';
   bubbles8 = 'assets/bg/bubbles11.png';
   bubbles9 = 'url(assets/bg/bubbles2.png)';

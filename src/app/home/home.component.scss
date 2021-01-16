@@ -141,11 +141,13 @@ mat-grid-list{
   background: rgba(0, 0, 0, 0.5);
   box-shadow: 0 0 0 2px greenyellow inset;
   color: greenyellow;
-  left: 35%;
+
+}
+.describtion{
+  width: 100%;
   position: absolute;
   bottom: 20%;
 }
-
 .tile {
   z-index: 1;
 }

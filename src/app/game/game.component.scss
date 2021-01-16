@@ -9,13 +9,12 @@
   height: 100%;
   width: 100%;
   overflow: hidden;
-  background: white;
+  color: white!important;
 }
 .left{
-
   left: 0;
-
 }
+
 .centered {
   position: absolute;
   top: 50%;
@@ -30,6 +29,18 @@
   overflow-x: hidden;
   padding-top: 20px;
 }
+
+.view{
+  height: 800px;
+  width: 1200px;
+  background: transparent;
+  overflow: hidden;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+}
+
 
 .right{
   top:50%;
@@ -81,12 +92,14 @@ a:focus, a:hover {
   left: 16%;
   position: absolute;
 }
+.content{
+  padding-top: 100px;
+  opacity: 1!important;
+}
 .cogs {
-  position: absolute;
-  z-index: 0.5;
-  width: 500px;
-  height: 500px;
-  opacity: 0.1;
+  background-image: url('../../assets/gif/cogs.gif');
+  object-fit: cover;
+  opacity: 0.5;
 }
 .thunder {
   position: absolute;

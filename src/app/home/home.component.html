@@ -37,7 +37,7 @@
             <p class="title"> Heroes Battle </p>
             <h3 class="sub-text">{{'bubble_subtitles' | translate}} </h3>
             <br>
-            <button mat-raised-button class=" btn_download"
+            <button mat-raised-button class=" btn_download "
                     routerLink="login"> {{'button_download' | translate}} </button>
           </div>
         </div>
@@ -59,9 +59,15 @@
           </div>
 
           <h4 class="sub-text position2"> {{'Game_mage_description' | translate}}</h4>
-
-          <button mat-raised-button class=" btn_animation"
-                  (click)="animate(i);"> {{!mageAnimationActive ? 'Show animation' : 'Hide animation'}}</button>
+          <div class="describtion row">
+            <div class="offset-1 col-8">
+              <h4 class="sub-text ">Fire Mage uses spells Fire and Fire Bomb</h4>
+            </div>
+            <div class=" col-3">
+              <button mat-raised-button class=" btn_animation "
+                      (click)="animate(i);"> {{!mageAnimationActive ? 'Show animation' : 'Hide animation'}}</button>
+            </div>
+          </div>
         </div>
       </ng-container>
 
@@ -80,8 +86,15 @@
           </div>
 
           <h4 class="sub-text position2"> {{'Game_fallen_description' | translate}}</h4>
-          <button mat-raised-button class=" btn_animation"
-                  (click)="animate(i);"> {{!fallenAnimationActive ? 'Show animation' : 'Hide animation'}}</button>
+          <div class="describtion row">
+            <div class="offset-1 col-8">
+              <h4 class="sub-text ">Fire Mage uses spells Fire and Fire Bomb</h4>
+            </div>
+            <div class=" col-3">
+              <button mat-raised-button class=" btn_animation"
+                      (click)="animate(i);"> {{!fallenAnimationActive ? 'Show animation' : 'Hide animation'}}</button>
+            </div>
+          </div>
         </div>
       </ng-container>
     </mat-grid-tile>
