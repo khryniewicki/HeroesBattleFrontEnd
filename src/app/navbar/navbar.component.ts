@@ -6,7 +6,7 @@ import {MatSlideToggleChange} from '@angular/material/slide-toggle';
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
-  styleUrls: ['./navbar.component.css']
+  styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent {
   isChecked: boolean;

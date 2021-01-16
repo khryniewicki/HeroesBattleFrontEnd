@@ -1,16 +1,18 @@
 import {Component, OnInit} from '@angular/core';
+import {VgAPI} from 'videogular2/compiled/src/core/services/vg-api';
 
 @Component({
   selector: 'app-animation',
   templateUrl: './animation.component.html',
-  styleUrls: ['./animation.component.css']
+  styleUrls: ['./animation.component.scss']
 })
 export class AnimationComponent implements OnInit {
-  bubbles4 = 'assets/bg/bubbles4.png';
-  bubbles5 = 'assets/bg/bubbles5.png';
+  bubbles4 = 'assets/bg/bubbles2.png';
+  bubbles5 = 'assets/bg/bubbles3.png';
   hero: string;
   bgImage: string;
   bgImageDefault = ' url(' + this.bubbles4 + ')';
+  api: VgAPI;
 
   private getBubbleBg(hero: string): string {
     switch (hero) {
@@ -35,6 +37,21 @@ export class AnimationComponent implements OnInit {
     this.bgImage = ' url(' + this.getBubbleBg(this.hero) + ')';
     const elementById = document.getElementById('tile_3');
     elementById.setAttribute('style', 'background-image:' + this.bgImage);
+  }
+
+  // tslint:disable-next-line:typedef
+  onPlayerReady(api: VgAPI) {
+    this.api = api;
+    this.api.getDefaultMedia().subscriptions.loadedMetadata.subscribe(
+      this.playVideo.bind(this)
+    );
+    this.api.getDefaultMedia().subscriptions.ended.subscribe(
+      this.playVideo.bind(this)
+    );
+  }
+  // tslint:disable-next-line:typedef
+  playVideo() {
+    this.api.play();
   }
 }
 

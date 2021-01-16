@@ -25,6 +25,8 @@ import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import {GameComponent} from './game/game.component';
 import {MatCardModule} from '@angular/material/card';
 import {AnimationComponent} from './home/tiles/animation/animation.component';
+import {MatExpansionModule} from '@angular/material/expansion';
+import {MatTabsModule} from '@angular/material/tabs';
 
 export const materialComponents = [MatListModule, MatButtonModule, MatIconModule, MatSidenavModule, MatToolbarModule, MatSlideToggleModule,
   FormsModule, MatGridListModule, MatButtonToggleModule, MatCardModule];
@@ -36,25 +38,27 @@ export const materialComponents = [MatListModule, MatButtonModule, MatIconModule
     routingComponents,
     GameComponent, AnimationComponent
   ],
-  imports: [
-    BrowserModule,
-    ServiceWorkerModule.register('ngsw-worker.js', {enabled: environment.production}),
-    BrowserAnimationsModule,
-    materialComponents,
-    RouterModule,
-    AppRoutingModule,
-    HttpClientModule,
-    VgCoreModule,
-    VgControlsModule,
-    TranslateModule.forRoot({
-      loader: {
-        provide: TranslateLoader,
-        useFactory: httpTranslateLoader,
-        deps: [HttpClient]
-      }
-    }),
+    imports: [
+        BrowserModule,
+        ServiceWorkerModule.register('ngsw-worker.js', {enabled: environment.production}),
+        BrowserAnimationsModule,
+        materialComponents,
+        RouterModule,
+        AppRoutingModule,
+        HttpClientModule,
+        VgCoreModule,
+        VgControlsModule,
+        TranslateModule.forRoot({
+            loader: {
+                provide: TranslateLoader,
+                useFactory: httpTranslateLoader,
+                deps: [HttpClient]
+            }
+        }),
+        MatExpansionModule,
+        MatTabsModule,
 
-  ],
+    ],
   providers: [],
   bootstrap: [AppComponent],
   entryComponents: [AnimationComponent]

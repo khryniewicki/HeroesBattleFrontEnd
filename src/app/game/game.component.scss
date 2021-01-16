@@ -1,0 +1,121 @@
+#firstPage{
+  height: calc(100% - 91px);
+  width: 100%;
+  overflow: hidden;
+}
+
+#secondPage{
+  border: solid 4px #000 !important;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  background: white;
+}
+.left{
+
+  left: 0;
+
+}
+.centered {
+  position: absolute;
+  top: 50%;
+  left: 60%;
+  transform: translate(-40%, -50%);
+}
+.split {
+  height: 100%;
+  width: 50%;
+  z-index: 1;
+  top: 0;
+  overflow-x: hidden;
+  padding-top: 20px;
+}
+
+.right{
+  top:50%;
+  right: 0;
+
+}
+
+a{
+  color: #9c937e
+}
+
+a:focus, a:hover {
+  border-bottom: 1px solid;
+}
+.lwjgl {
+  width: 267px;
+  height: 106px;
+  top: 16%;
+
+  left: 18%;
+  position: absolute;
+}
+
+.java {
+  width: 174px;
+  height: 179px;
+  top: 12%;
+  left: 6%;
+  position: absolute;
+}
+.angular {
+  width: 150px;
+  height: 150px;
+  top: 60%;
+  left: 6%;
+  position: absolute;
+}
+.spring {
+  width: 166px;
+  height: 120px;
+  top: 35%;
+  left: 13%;
+  position: absolute;
+}
+.gcp {
+  width: 308px;
+  height: 176px;
+  top: 60%;
+  left: 16%;
+  position: absolute;
+}
+.cogs {
+  position: absolute;
+  z-index: 0.5;
+  width: 500px;
+  height: 500px;
+  opacity: 0.1;
+}
+.thunder {
+  position: absolute;
+  z-index: 0.5;
+  opacity: 0.05;
+  object-fit: cover;
+}
+.accordion_panel{
+
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+}
+.note {
+  position: absolute;
+  bottom: 5%;
+}
+.learnMoreButton{
+  position: relative;
+  left: 30%;
+  width: 200px;
+  height: 52px;
+  font-size: 18px;
+}
+.title {
+  position: absolute;
+  top: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #9c937e;
+  font-size: 35px;
+}
+
