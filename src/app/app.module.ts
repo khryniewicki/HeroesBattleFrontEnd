@@ -27,6 +27,7 @@ import {MatCardModule} from '@angular/material/card';
 import {AnimationComponent} from './home/tiles/animation/animation.component';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatTabsModule} from '@angular/material/tabs';
+import { DownloadComponent } from './download/download.component';
 
 export const materialComponents = [MatListModule, MatButtonModule, MatIconModule, MatSidenavModule, MatToolbarModule, MatSlideToggleModule,
   FormsModule, MatGridListModule, MatButtonToggleModule, MatCardModule];
@@ -36,7 +37,7 @@ export const materialComponents = [MatListModule, MatButtonModule, MatIconModule
     AppComponent,
     NavbarComponent,
     routingComponents,
-    GameComponent, AnimationComponent
+    GameComponent, AnimationComponent, DownloadComponent
   ],
     imports: [
         BrowserModule,

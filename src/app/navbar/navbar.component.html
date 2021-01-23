@@ -20,14 +20,16 @@
     <mat-toolbar class="shadowBox  background_black text-white ">
       <ng-container class=" navbar-container ">
         <a class="navbar-brand " href=""> <img src="/assets/icons/logo7.png" id="logo"
-                                                class="d-inline-block align-bottom" alt="">
+                                               class="d-inline-block align-bottom" alt="">
         </a>
       </ng-container>
       <span class="spacer"></span>
       <div class="main-bar ">
         <a mat-list-item class=" active" routerLink="">{{'HomePage' | translate}}</a>
         <a mat-list-item class=" active" routerLink="game">{{'GamePage' | translate}}</a>
-        <a mat-list-item class=" disabled" routerLink="login">{{'Log-in' | translate}}</a>
+        <a *ngIf="!isLoggedIn" (click)="login()" >{{'Log-in' | translate}}</a>
+        <a *ngIf="isLoggedIn" (click)="logout()" routerLink="">{{'Log-in' | translate}}</a>
+
       </div>
       <button class="hamburgerButton " type="button" aria-label="Toggle sidenav"
               mat-icon-button (click)="drawer.toggle()">
