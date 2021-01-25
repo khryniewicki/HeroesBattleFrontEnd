@@ -4,6 +4,8 @@
   "ServerPage": "ABOUT SERVER",
   "WebPage": "ABOUT WEB-PAGE",
   "Log-in" : "LOG IN",
+  "Log-out" : "LOG OUT",
+  "Account" : "ACCOUNT",
   "bubble_subtitles" : "Online game designed for two players who select one of six heroes and fight to the loss of their lives. The combat area is covered with obstacles that make it difficult to escape ...",
   "button_download" : "DOWNLOAD",
   "Game_mage_title": "Wizards",

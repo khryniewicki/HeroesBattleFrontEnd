@@ -8,6 +8,7 @@ import {
   ViewContainerRef
 } from '@angular/core';
 import {AnimationComponent} from './tiles/animation/animation.component';
+import {NavbarComponent} from '../navbar/navbar.component';
 
 export interface Tile {
   color: string;
@@ -19,6 +20,7 @@ export interface Tile {
 }
 
 @Component({
+  providers: [NavbarComponent],
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
@@ -45,7 +47,7 @@ export class HomeComponent {
     {cols: 2, rows: 2, color: 'black', bg: ' url(' + this.bubbles3 + ')', class: 'tile'},
   ];
 
-  constructor(private el: ElementRef, private componentFactoryResolver: ComponentFactoryResolver) {
+  constructor(private el: ElementRef, private componentFactoryResolver: ComponentFactoryResolver, private navbar: NavbarComponent) {
     this.mage = 'fire_wizard';
     this.fallen = 'fallen_king';
   }
@@ -54,6 +56,7 @@ export class HomeComponent {
 // tslint:disable-next-line:typedef
   edit(value: string) {
     this.mage = value;
+
     if (this.mageAnimationActive) {
       this.animation_turn_off(1);
       this.destroy_animation();
@@ -171,6 +174,10 @@ export class HomeComponent {
     }
   }
 
+  // tslint:disable-next-line:typedef
+  move_to_download() {
+    this.navbar.login();
+  }
 }
 
 
