@@ -9,6 +9,11 @@ import {
 } from '@angular/core';
 import {AnimationComponent} from './tiles/animation/animation.component';
 import {NavbarComponent} from '../navbar/navbar.component';
+import {Router} from '@angular/router';
+import {AuthenticationService} from '../auth/authentication.service';
+import {AuthguardService} from '../auth/authguard.service';
+import {SubjectService} from '../subject.service';
+
 
 export interface Tile {
   color: string;
@@ -47,7 +52,9 @@ export class HomeComponent {
     {cols: 2, rows: 2, color: 'black', bg: ' url(' + this.bubbles3 + ')', class: 'tile'},
   ];
 
-  constructor(private el: ElementRef, private componentFactoryResolver: ComponentFactoryResolver, private navbar: NavbarComponent) {
+  // tslint:disable-next-line:max-line-length
+  constructor(private el: ElementRef, private componentFactoryResolver: ComponentFactoryResolver, private subject: SubjectService,
+              private auth: AuthenticationService, private router: Router) {
     this.mage = 'fire_wizard';
     this.fallen = 'fallen_king';
   }
@@ -176,7 +183,7 @@ export class HomeComponent {
 
   // tslint:disable-next-line:typedef
   move_to_download() {
-    this.navbar.login();
+    this.router.navigate(['download']);
   }
 }
 

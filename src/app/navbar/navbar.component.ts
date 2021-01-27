@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {BreakpointObserver} from '@angular/cdk/layout';
 import {TranslateService} from '@ngx-translate/core';
 import {MatSlideToggleChange} from '@angular/material/slide-toggle';
-import {AppService} from '../app.service';
+import {AuthenticationService} from '../auth/authentication.service';
 
 @Component({
   selector: 'app-navbar',
@@ -14,7 +14,8 @@ export class NavbarComponent implements OnInit {
   lang: string;
   public isLoggedIn = false;
 
-  constructor(private breakpointObserver: BreakpointObserver, public translate: TranslateService, private loginService: AppService) {
+  // tslint:disable-next-line:max-line-length
+  constructor(private breakpointObserver: BreakpointObserver, public translate: TranslateService, private loginService: AuthenticationService) {
     translate.addLangs(['en', 'pl']);
     translate.setDefaultLang('en');
     this.lang = 'EN';
@@ -43,12 +44,13 @@ export class NavbarComponent implements OnInit {
       const s = window.location.href.substring(i + 5);
       this.loginService.retrieveToken(s);
     }
+
+
   }
 
   // tslint:disable-next-line:typedef
-    login() {
-    window.location.href = 'http://localhost:8085/auth/realms/heroes_battle/protocol/openid-connect/auth?response_type=code&client_id=' +
-      this.loginService.clientId + '&redirect_uri=' + this.loginService.redirectUri;
+  login() {
+    this.loginService.login();
   }
 
   // tslint:disable-next-line:typedef

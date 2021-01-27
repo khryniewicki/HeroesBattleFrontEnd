@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { LoggingComponent } from './logging.component';
+import { RedirectComponent } from './redirect.component';
 
-describe('LoggingComponent', () => {
-  let component: LoggingComponent;
-  let fixture: ComponentFixture<LoggingComponent>;
+describe('RedirectComponent', () => {
+  let component: RedirectComponent;
+  let fixture: ComponentFixture<RedirectComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ LoggingComponent ]
+      declarations: [ RedirectComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(LoggingComponent);
+    fixture = TestBed.createComponent(RedirectComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

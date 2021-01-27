@@ -3,9 +3,10 @@ import {RouterModule, Routes} from '@angular/router';
 import {HomeComponent} from './home/home.component';
 import {ServerComponent} from './server/server.component';
 import {WebComponent} from './web/web.component';
-import {LoggingComponent} from './logging/logging.component';
 import {GameComponent} from './game/game.component';
 import {DownloadComponent} from './download/download.component';
+import {AuthguardService} from './auth/authguard.service';
+import {RedirectComponent} from './redirect/redirect.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'home', pathMatch: 'full'},
@@ -13,8 +14,8 @@ const routes: Routes = [
   {path: 'game', component: GameComponent},
   {path: 'server', component: ServerComponent},
   {path: 'web', component: WebComponent},
-  {path: 'login', component: LoggingComponent},
-  {path: 'download', component: DownloadComponent},
+  {path: 'redirect', component: RedirectComponent},
+  {path: 'download', component: DownloadComponent, canActivate: [ AuthguardService]},
   {path: '**', component: HomeComponent},
 ];
 
@@ -25,4 +26,6 @@ const routes: Routes = [
 })
 export class AppRoutingModule {
 }
-export const routingComponents = [HomeComponent, GameComponent, ServerComponent, WebComponent, LoggingComponent, DownloadComponent];
+
+export const routingComponents = [HomeComponent, GameComponent, ServerComponent, WebComponent,  RedirectComponent,
+  DownloadComponent];

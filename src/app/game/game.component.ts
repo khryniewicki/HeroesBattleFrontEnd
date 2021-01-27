@@ -1,4 +1,3 @@
-
 import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {Tile} from '../home/home.component';
 
@@ -8,13 +7,14 @@ import {Tile} from '../home/home.component';
   styleUrls: ['./game.component.scss']
 })
 export class GameComponent implements OnInit {
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.None;
 
   bubbles7 = 'assets/bg/bubbles7.png';
   bubbles8 = 'assets/bg/bubbles11.png';
   bubbles9 = 'url(assets/bg/bubbles2.png)';
   bubbles10 = 'url(assets/bg/bubbles10.png)';
   bubbles11 = 'assets/bg/bubbles10.png';
+  // tslint:disable-next-line:typedef
 
   tiles: Tile[] = [
     {cols: 4, rows: 3, color: 'black', bg: ' url(' + this.bubbles9 + ')', class: ''},
@@ -25,11 +25,11 @@ export class GameComponent implements OnInit {
 
   ];
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit(): void {
   }
-
 
 
   scroll(id): void {

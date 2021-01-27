@@ -27,7 +27,10 @@ import {MatCardModule} from '@angular/material/card';
 import {AnimationComponent} from './home/tiles/animation/animation.component';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatTabsModule} from '@angular/material/tabs';
-import { DownloadComponent } from './download/download.component';
+import {DownloadComponent} from './download/download.component';
+import {SafePipe} from './utils/SafePipeIframe';
+import {RedirectComponent} from './redirect/redirect.component';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 export const materialComponents = [MatListModule, MatButtonModule, MatIconModule, MatSidenavModule, MatToolbarModule, MatSlideToggleModule,
   FormsModule, MatGridListModule, MatButtonToggleModule, MatCardModule];
@@ -37,29 +40,31 @@ export const materialComponents = [MatListModule, MatButtonModule, MatIconModule
     AppComponent,
     NavbarComponent,
     routingComponents,
-    GameComponent, AnimationComponent, DownloadComponent
+    GameComponent, AnimationComponent, DownloadComponent, SafePipe, RedirectComponent
   ],
-    imports: [
-        BrowserModule,
-        ServiceWorkerModule.register('ngsw-worker.js', {enabled: environment.production}),
-        BrowserAnimationsModule,
-        materialComponents,
-        RouterModule,
-        AppRoutingModule,
-        HttpClientModule,
-        VgCoreModule,
-        VgControlsModule,
-        TranslateModule.forRoot({
-            loader: {
-                provide: TranslateLoader,
-                useFactory: httpTranslateLoader,
-                deps: [HttpClient]
-            }
-        }),
-        MatExpansionModule,
-        MatTabsModule,
+  imports: [
+    BrowserModule,
+    ServiceWorkerModule.register('ngsw-worker.js', {enabled: environment.production}),
+    BrowserAnimationsModule,
+    materialComponents,
+    RouterModule,
+    AppRoutingModule,
+    HttpClientModule,
+    VgCoreModule,
+    VgControlsModule,
 
-    ],
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: httpTranslateLoader,
+        deps: [HttpClient]
+      }
+    }),
+    MatExpansionModule,
+    MatTabsModule,
+    MatProgressSpinnerModule,
+
+  ],
   providers: [],
   bootstrap: [AppComponent],
   entryComponents: [AnimationComponent]

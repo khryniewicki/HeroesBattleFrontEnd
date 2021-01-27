@@ -6,6 +6,7 @@
   "Log-in" : "LOG IN",
   "Log-out" : "LOG OUT",
   "Account" : "ACCOUNT",
+  "redirecting": "REDIRECTING TO HEROES BATTLE AUTH SERVER, PLEASE WAIT ...",
   "bubble_subtitles" : "Online game designed for two players who select one of six heroes and fight to the loss of their lives. The combat area is covered with obstacles that make it difficult to escape ...",
   "button_download" : "DOWNLOAD",
   "Game_mage_title": "Wizards",
