@@ -1,0 +1,8 @@
+.view{
+  width: 70%;
+  left: 15%;
+  margin-top: 3%;
+}
+:host ::ng-deep router-outlet + *{
+
+}

@@ -1,1 +1,51 @@
-<p>download works!</p>
+<div class="container-fluid ">
+  <mat-tab-group animationDuration="0ms" mat-align-tabs="center" >
+    <mat-tab label="Windows" >
+
+      <mat-card class="view">
+
+        <mat-card-content class="content">
+          <mat-accordion >
+            <mat-expansion-panel hideToggle class="expansion ">
+              <mat-expansion-panel-header >
+                <mat-panel-title>
+                  1. Instrukcja instalacji JRE (środowisko uruchomieniowe Javy)
+                </mat-panel-title>
+                <mat-panel-description>
+                  Ten krok można pominąć, jeżeli już posiadasz JRE lub JDK 11 +
+                </mat-panel-description>
+              </mat-expansion-panel-header>
+              <p>INSTRUKCJA</p>
+            </mat-expansion-panel>
+            <mat-expansion-panel hideToggle>
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  2. Pobierz folder z grą
+                </mat-panel-title>
+                <mat-panel-description>
+                  70 mb
+                </mat-panel-description>
+              </mat-expansion-panel-header>
+              <button mat-raised-button class="mat-primary m-5 " (click)="download2('heroes_battle_windows.zip')">
+                POBIERZ GRĘ
+                HEROES BATTLE
+              </button>
+            </mat-expansion-panel>
+          </mat-accordion>
+
+        </mat-card-content>
+      </mat-card>
+    </mat-tab>
+    <mat-tab label="Linux">
+
+      <mat-card class="view">
+
+        <mat-card-content class="content">
+
+          <button mat-raised-button class="mat-primary m-5 " (click)="download2('heroes_battle_windows.zip')">
+            POBIERZ GRĘ HEROES BATTLE</button>
+        </mat-card-content>
+      </mat-card>
+    </mat-tab>
+  </mat-tab-group>
+</div>

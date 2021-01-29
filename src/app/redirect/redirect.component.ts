@@ -20,7 +20,7 @@ import {ActivatedRoute, Router} from '@angular/router';
       color: gray;
       padding: 12px;
       position: absolute;
-      top: 40%;
+      top: 30%;
       left: 50%;
       transform: translate(-50%, -50%);
     }
@@ -28,7 +28,7 @@ import {ActivatedRoute, Router} from '@angular/router';
       color: gray;
       padding: 12px;
       position: absolute;
-      top: 60%;
+      top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
     }

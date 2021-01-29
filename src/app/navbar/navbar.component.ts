@@ -34,7 +34,6 @@ export class NavbarComponent implements OnInit {
     }
   }
 
-
   // tslint:disable-next-line:typedef
   ngOnInit() {
     this.isLoggedIn = this.loginService.checkCredentials();
@@ -44,8 +43,6 @@ export class NavbarComponent implements OnInit {
       const s = window.location.href.substring(i + 5);
       this.loginService.retrieveToken(s);
     }
-
-
   }
 
   // tslint:disable-next-line:typedef
