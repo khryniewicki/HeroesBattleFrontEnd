@@ -1,8 +1,19 @@
-.view{
-  width: 70%;
-  left: 15%;
-  margin-top: 3%;
-}
-:host ::ng-deep router-outlet + *{
 
+.mat-expansion-panel-header{
+  height: 80px;
+  color: black;
 }
+.card_full{
+  width: 100%;
+  margin-top: 3%;
+  padding-right: 10%;
+  padding-left: 10%;
+}
+
+.img_jdk{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 40%;
+}
+

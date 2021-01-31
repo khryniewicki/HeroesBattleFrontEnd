@@ -1,7 +1,6 @@
 html, body {
   height: 100%;
   font-family: 'Spicy Rice', cursive;
-
 }
 @import '~@angular/material/theming';
 @include mat-core();
@@ -145,4 +144,6 @@ mat-toolbar {
     font-size: 10px;
   }
 }
-
+.pointer{
+  cursor: pointer;
+}

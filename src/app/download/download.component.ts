@@ -10,10 +10,11 @@ import {OverlayContainer} from '@angular/cdk/overlay';
 export class DownloadComponent implements OnInit {
   private resourceServerUrl = 'http://localhost:8081/resource-server/api/download/';
 
-  constructor(private auth: AuthenticationService, private overlay: OverlayContainer) {
-    const darkClassName = 'dark-theme';
-    this.overlay.getContainerElement().classList.add(darkClassName);
-  }
+  constructor(private auth: AuthenticationService){}
+  // , private overlay: OverlayContainer) {
+  //   const darkClassName = 'dark-theme';
+  //   this.overlay.getContainerElement().classList.add(darkClassName);
+  // }
 
 
   ngOnInit(): void {

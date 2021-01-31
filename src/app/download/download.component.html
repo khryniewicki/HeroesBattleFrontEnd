@@ -1,34 +1,77 @@
-<div class="container-fluid ">
-  <mat-tab-group animationDuration="0ms" mat-align-tabs="center" >
-    <mat-tab label="Windows" >
+<div class="container-fluid">
+  <mat-tab-group animationDuration="0ms" mat-align-tabs="center">
+    <mat-tab label="Windows">
 
-      <mat-card class="view">
+      <mat-card class="card_full">
 
-        <mat-card-content class="content">
-          <mat-accordion >
+        <mat-card-content class="content ">
+          <mat-accordion>
             <mat-expansion-panel hideToggle class="expansion ">
-              <mat-expansion-panel-header >
+              <mat-expansion-panel-header>
                 <mat-panel-title>
-                  1. Instrukcja instalacji JRE (środowisko uruchomieniowe Javy)
+                  <h3><b>{{'Ins_header_1' | translate}}</b></h3>
                 </mat-panel-title>
                 <mat-panel-description>
-                  Ten krok można pominąć, jeżeli już posiadasz JRE lub JDK 11 +
+                  <h3> {{'Ins_description_1' |translate}}</h3>
                 </mat-panel-description>
               </mat-expansion-panel-header>
-              <p>INSTRUKCJA</p>
+              {{'Ins_text_1'| translate}}
+              <br> <br>
+
+              <b> {{'Ins_title_1'| translate}} </b><br> <br>
+
+              {{'Ins_link'| translate}}  <a href="https://jdk.java.net/java-se-ri/11">{{'Ins_link2'| translate}} </a>
+              <br> <br>
+
+              {{'Ins_text_2' | translate}}
+              <br> <br> <br>
+              <b> {{'Ins_title_2'| translate}}  </b>
+              <br><br>
+              {{'Ins_text_3' | translate}}<b>{{'Ins_text_4' | translate}}</b>
+              <br><br>
+              {{'Ins_text_5' | translate}}
+              <br><br>
+              <img class="img_jdk" src="{{'Ins_img_1' | translate }}" alt="environment_window"><br>
+
+              {{'Ins_text_6' | translate}} <b> {{'Ins_text_6A' | translate}} </b> {{'Ins_text_6B' | translate}}
+              <b> {{'Ins_text_7' | translate}} </b>
+              <br><br>
+              <img class="img_jdk" src="{{'Ins_img_2' | translate }}" alt="environment_window2"><br>
+              <br><br>
+              {{'Ins_text_8' | translate}}  <b> {{'Ins_text_9' | translate}}  </b> {{'Ins_text_10' | translate}}
+              <b> {{'Ins_text_11' | translate}}  </b> {{'Ins_text_12' | translate}}
+              <br><br>
+              <img class="img_jdk" src="{{'Ins_img_3' | translate }}" alt="environment_window3"><br>
+              <br><br>
+              {{'Ins_text_13' | translate}}  <b>{{'Ins_text_14' | translate}} </b> {{'Ins_text_15' | translate}}
+              <b>{{'Ins_text_16' | translate}} </b> <br><br>
+              <img class="img_jdk" src="{{'Ins_img_4' | translate }}" alt="environment_window4"><br>
+              <br><br>
+              {{'Ins_text_17' | translate}}  <b> {{'Ins_text_18' | translate}}</b> {{'Ins_text_19' | translate}}
+              <b> {{'Ins_text_20' | translate}} </b><br><br>
+              <img class="img_jdk" src="{{'Ins_img_5' | translate }}" alt="environment_window5"><br>
+              <br><br>
+              {{'Ins_text_21' | translate}}  <b> OK </b>. <br><br>
+              <b class="text-danger">  {{'Ins_text_22' | translate}}</b><br><br>
+              <a href="https://www.ibm.com/support/knowledgecenter/SS3JSW_5.2.0/com.ibm.help.gdha_installing.doc/com.ibm.help.gdha_installing.doc/gdha_setting_java_variable_win.html">
+                {{'Ins_text_23' | translate}}</a>
+
             </mat-expansion-panel>
             <mat-expansion-panel hideToggle>
               <mat-expansion-panel-header>
                 <mat-panel-title>
-                  2. Pobierz folder z grą
+                  <h3><b> {{'Ins_header_2' | translate}}</b></h3>
                 </mat-panel-title>
-                <mat-panel-description>
-                  70 mb
-                </mat-panel-description>
               </mat-expansion-panel-header>
+              <ul><b>{{'Ins_text2_1' | translate}}</b>
+                <br><br>
+                <li> {{'Ins_text2_2' | translate}}</li>
+                <li> {{'Ins_text2_3' | translate}}</li>
+                <li> {{'Ins_text2_4' | translate}}</li>
+
+              </ul>
               <button mat-raised-button class="mat-primary m-5 " (click)="download2('heroes_battle_windows.zip')">
-                POBIERZ GRĘ
-                HEROES BATTLE
+                {{'Ins_text_download' | translate}}
               </button>
             </mat-expansion-panel>
           </mat-accordion>
@@ -38,12 +81,61 @@
     </mat-tab>
     <mat-tab label="Linux">
 
-      <mat-card class="view">
+      <mat-card class="card_full">
 
-        <mat-card-content class="content">
+        <mat-card-content class="content ">
+          <mat-accordion>
+            <mat-expansion-panel hideToggle class="expansion ">
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  <h3><b>{{'Ins_header_1' | translate}}</b></h3>
+                </mat-panel-title>
+                <mat-panel-description>
+                  <h3> {{'Ins_description_1' |translate}}</h3>
+                </mat-panel-description>
+              </mat-expansion-panel-header>
+              {{'Ins_text_1'| translate}}
+              <br> <br>
 
-          <button mat-raised-button class="mat-primary m-5 " (click)="download2('heroes_battle_windows.zip')">
-            POBIERZ GRĘ HEROES BATTLE</button>
+              <b> {{'Ins_title_1'| translate}} </b><br> <br>
+
+              {{'Ins_link'| translate}}  <a href="https://jdk.java.net/java-se-ri/11">{{'Ins_link2'| translate}} </a>
+              <br> <br>
+
+              <p>{{'Ins_linux_text1' | translate}} <br><br>
+
+                {{'Ins_linux_text2' | translate}} <b>{{'Ins_linux_text3' | translate}}</b> {{'Ins_linux_text4' | translate}}<br>
+                {{'Ins_linux_text5' | translate}} <br> <br>
+                {{'Ins_linux_text2' | translate}} <b>{{'Ins_linux_text6' | translate}}</b> {{'Ins_linux_text7' | translate}}<br>
+                {{'Ins_linux_text8' | translate}}<br><br>
+                {{'Ins_linux_text9' | translate}} <br>
+                {{'Ins_linux_text10' | translate}}<br>
+                {{'Ins_linux_text11' | translate}}<br><br>
+                {{'Ins_linux_text12' | translate}}</p>
+                <p class="text-danger"><b> {{"Ins_text_22" | translate}}</b></p><br>
+                <a href="https://www.ibm.com/support/knowledgecenter/SS3JSW_5.2.0/com.ibm.help.gdha_installing.doc/com.ibm.help.gdha_installing.doc/gdha_setting_java_variable_linux.html">
+                  {{'Ins_text_23' | translate}}</a>
+
+
+            </mat-expansion-panel>
+            <mat-expansion-panel hideToggle>
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  <h3><b> {{'Ins_header_2' | translate}}</b></h3>
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+              <ul><b>{{'Ins_text2_1' | translate}}</b>
+                <br><br>
+                <li> {{'Ins_text2_2A' | translate}}</li>
+                <li> {{'Ins_text2_3' | translate}}</li>
+                <li> {{'Ins_text2_4' | translate}}</li>
+              </ul>
+              <button mat-raised-button class="mat-primary m-5 " (click)="download2('heroes_battle_windows.zip')">
+                {{'Ins_text_download' | translate}}
+              </button>
+            </mat-expansion-panel>
+          </mat-accordion>
+
         </mat-card-content>
       </mat-card>
     </mat-tab>
