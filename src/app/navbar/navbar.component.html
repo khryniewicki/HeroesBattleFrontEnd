@@ -6,8 +6,11 @@
       <a mat-list-item class=" active" routerLink="">{{'HomePage' | translate}}</a>
       <a mat-list-item class=" active" routerLink="game">{{'GamePage' | translate}}</a>
       <a mat-list-item class=" pointer active" *ngIf="!isLoggedIn" (click)="login()">{{'Log-in' | translate}}</a>
-      <a mat-list-item class=" pointer active" *ngIf="isLoggedIn" (click)="logout()">{{'Log-out' | translate}}</a>
-      <a mat-list-item class=" pointer active" *ngIf="isLoggedIn" (click)="account()">{{'Account' | translate}}</a>
+      <ng-container *ngIf="isLoggedIn">
+        <a mat-list-item class=" pointer active" (click)="logout()">{{'Log-out' | translate}}</a>
+        <a mat-list-item class=" pointer active" (click)="account()">{{'Account' | translate}}</a>
+        <a mat-list-item class="pointer  active" *ngIf="isAdmin" (click)="game_panel()">Game settings</a>
+      </ng-container>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
@@ -30,9 +33,11 @@
         <a mat-list-item class="active" routerLink="">{{'HomePage' | translate}}</a>
         <a mat-list-item class="active" routerLink="game">{{'GamePage' | translate}}</a>
         <a mat-list-item class="pointer active" *ngIf="!isLoggedIn" (click)="login()">{{'Log-in' | translate}}</a>
-        <a mat-list-item class="pointer  active" *ngIf="isLoggedIn" (click)="logout()"
-           routerLink="">{{'Log-out' | translate}}</a>
-        <a mat-list-item class="pointer  active" *ngIf="isLoggedIn" (click)="account()">{{'Account' | translate}}</a>
+        <ng-container *ngIf="isLoggedIn">
+          <a mat-list-item class="pointer  active" (click)="logout()" routerLink="">{{'Log-out' | translate}}</a>
+          <a mat-list-item class="pointer  active" (click)="account()">{{'Account' | translate}}</a>
+          <a mat-list-item class="pointer  active" (click)="game_panel()">Game settings</a>
+        </ng-container>
 
       </div>
       <button class="hamburgerButton " type="button" aria-label="Toggle sidenav"

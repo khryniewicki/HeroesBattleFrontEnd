@@ -1,3 +1,5 @@
+
+
 <div class="container-fluid">
   <mat-tab-group animationDuration="0ms" mat-align-tabs="center">
     <mat-tab label="Windows">
@@ -68,10 +70,13 @@
                 <li> {{'Ins_text2_2' | translate}}</li>
                 <li> {{'Ins_text2_3' | translate}}</li>
                 <li> {{'Ins_text2_4' | translate}}</li>
-
               </ul>
               <button mat-raised-button class="mat-primary m-5 " (click)="download2('heroes_battle_windows.zip')">
+
                 {{'Ins_text_download' | translate}}
+              </button>
+              <button mat-raised-button class="mat-primary m-5 " (click)="download('heroes_battle_windows.zip')">
+TEST
               </button>
             </mat-expansion-panel>
           </mat-accordion>
@@ -130,9 +135,10 @@
                 <li> {{'Ins_text2_3' | translate}}</li>
                 <li> {{'Ins_text2_4' | translate}}</li>
               </ul>
-              <button mat-raised-button class="mat-primary m-5 " (click)="download2('heroes_battle_windows.zip')">
+              <button mat-raised-button class="mat-primary m-5 " (click)="download2('heroes_battle_linux.zip')">
                 {{'Ins_text_download' | translate}}
               </button>
+
             </mat-expansion-panel>
           </mat-accordion>
 

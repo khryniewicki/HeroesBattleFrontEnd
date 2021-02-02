@@ -3,6 +3,8 @@ import {BreakpointObserver} from '@angular/cdk/layout';
 import {TranslateService} from '@ngx-translate/core';
 import {MatSlideToggleChange} from '@angular/material/slide-toggle';
 import {AuthenticationService} from '../auth/authentication.service';
+import {Router} from '@angular/router';
+import {map, take} from 'rxjs/operators';
 
 @Component({
   selector: 'app-navbar',
@@ -13,11 +15,14 @@ export class NavbarComponent implements OnInit {
   isChecked: boolean;
   lang: string;
   public isLoggedIn = false;
+  public isAdmin = false;
 
   // tslint:disable-next-line:max-line-length
-  constructor(private breakpointObserver: BreakpointObserver, public translate: TranslateService, private loginService: AuthenticationService) {
+  constructor(private breakpointObserver: BreakpointObserver, public translate: TranslateService,
+              private authService: AuthenticationService, private router: Router) {
     translate.addLangs(['en', 'pl']);
     translate.setDefaultLang('en');
+
     this.lang = 'EN';
   }
 
@@ -35,19 +40,35 @@ export class NavbarComponent implements OnInit {
   }
 
   // tslint:disable-next-line:typedef
+  checkRole() {
+    return this.authService.checkRole().pipe(map(e => {
+      if (e) {
+        console.log('VALID: ' + e.credentials);
+        return e.credentials;
+      }
+    }, error => {
+      console.log(error);
+      return false;
+    }));
+  }
+
+  // tslint:disable-next-line:typedef
   ngOnInit() {
-    this.isLoggedIn = this.loginService.checkCredentials();
+    this.isLoggedIn = this.authService.checkCredentials();
+    if (this.isLoggedIn) {
+      this.checkRole();
+    }
     const i = window.location.href.indexOf('code');
     // tslint:disable-next-line:triple-equals
     if (!this.isLoggedIn && i != -1) {
       const s = window.location.href.substring(i + 5);
-      this.loginService.retrieveToken(s);
+      this.authService.retrieveToken(s);
     }
   }
 
   // tslint:disable-next-line:typedef
   login() {
-    this.loginService.login();
+    this.authService.login();
   }
 
   // tslint:disable-next-line:typedef
@@ -57,7 +78,11 @@ export class NavbarComponent implements OnInit {
 
   // tslint:disable-next-line:typedef
   logout() {
-    this.loginService.logout();
+    this.authService.logout();
   }
 
+  // tslint:disable-next-line:typedef
+  game_panel() {
+    this.router.navigate(['game-settings-panel']);
+  }
 }

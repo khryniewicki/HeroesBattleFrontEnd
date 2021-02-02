@@ -19,7 +19,7 @@ export class AuthguardService implements CanActivate {
     if (!this.auth.checkCredentials()) {
       this.auth.login2();
       const path1 = route.url.pop().path;
-      this.auth.setCookie(path1);
+      this.auth.setRedirectCookie(path1);
       return false;
     }
     return true;

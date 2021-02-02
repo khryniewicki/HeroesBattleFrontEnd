@@ -31,6 +31,7 @@ import {DownloadComponent} from './download/download.component';
 import {SafePipe} from './utils/SafePipeIframe';
 import {RedirectComponent} from './redirect/redirect.component';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { GameSettingsPanelComponent } from './game-settings-panel/game-settings-panel.component';
 
 export const materialComponents = [MatListModule, MatButtonModule, MatIconModule, MatSidenavModule, MatToolbarModule, MatSlideToggleModule,
   FormsModule, MatGridListModule, MatButtonToggleModule, MatCardModule];
@@ -40,7 +41,7 @@ export const materialComponents = [MatListModule, MatButtonModule, MatIconModule
     AppComponent,
     NavbarComponent,
     routingComponents,
-    GameComponent, AnimationComponent, DownloadComponent, SafePipe, RedirectComponent
+    GameComponent, AnimationComponent, DownloadComponent, SafePipe, RedirectComponent, GameSettingsPanelComponent
   ],
   imports: [
     BrowserModule,
