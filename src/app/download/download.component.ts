@@ -1,5 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {AuthenticationService} from '../auth/authentication.service';
+import {Observable} from 'rxjs';
+import {Download} from '../utils/download/download';
+import {DownloadService} from '../utils/download/download.service';
 
 @Component({
   selector: 'app-download',
@@ -8,34 +11,34 @@ import {AuthenticationService} from '../auth/authentication.service';
 })
 export class DownloadComponent implements OnInit {
   private downloadUrl = '/api/download';
-  private emptyRoomUrl = '/api/option/empty-room';
+  download$: Observable<Download>;
 
-  constructor(private auth: AuthenticationService) {
+  constructor(private auth: AuthenticationService, private downloadService: DownloadService) {
   }
 
   ngOnInit(): void {
   }
 
-  // tslint:disable-next-line:typedef
-  download(uri: string) {
-    this.auth.getResource(this.emptyRoomUrl).subscribe(
-      p => console.log(p),
-      error => console.log(error));
-  }
-
 // tslint:disable-next-line:typedef
-  download2(uri: string) {
-    this.auth.getResource2(this.downloadUrl + '/' + uri).subscribe(
-      data => this.downloadFile(data),
-      error => console.log(error));
+  downloadResource(uri: string) {
+    this.download$ = this.downloadService.downloadFromResource(uri);
   }
 
-  // tslint:disable-next-line:typedef
-  downloadFile(blob: Blob) {
-    const url = window.URL.createObjectURL(blob);
-    const anchor = document.createElement('a');
-    anchor.download = 'heroes_battle.zip';
-    anchor.href = url;
-    anchor.click();
-  }
+
+  //
+  // // tslint:disable-next-line:typedef
+  // downloadFile(blob: Blob) {
+  //
+  //     const url = window.URL.createObjectURL(blob);
+  //     const anchor = document.createElement('a');
+  //
+  //     anchor.download = 'heroes_battle.zip';
+  //     anchor.href = url;
+  //     anchor.click();
+  //     URL.revokeObjectURL(url);
+  //
+  // }
+  // }
+
+
 }

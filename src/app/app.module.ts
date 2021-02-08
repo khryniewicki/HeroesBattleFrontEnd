@@ -14,10 +14,10 @@ import {RouterModule} from '@angular/router';
 import {MatIconModule} from '@angular/material/icon';
 import {AppRoutingModule, routingComponents} from './app-routing.module';
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
-import {HttpClient, HttpClientModule} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClient, HttpClientModule} from '@angular/common/http';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {VgCoreModule} from '@videogular/ngx-videogular/core';
 import {VgControlsModule} from '@videogular/ngx-videogular/controls';
@@ -32,6 +32,10 @@ import {SafePipe} from './utils/SafePipeIframe';
 import {RedirectComponent} from './redirect/redirect.component';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { GameSettingsPanelComponent } from './game-settings-panel/game-settings-panel.component';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
+import {DEFAULT_TIMEOUT, TimeoutInterceptor} from './utils/timeout/timeout-interceptor.service';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
 
 export const materialComponents = [MatListModule, MatButtonModule, MatIconModule, MatSidenavModule, MatToolbarModule, MatSlideToggleModule,
   FormsModule, MatGridListModule, MatButtonToggleModule, MatCardModule];
@@ -64,9 +68,16 @@ export const materialComponents = [MatListModule, MatButtonModule, MatIconModule
     MatExpansionModule,
     MatTabsModule,
     MatProgressSpinnerModule,
+    MatFormFieldModule,
+    MatInputModule,
+    ReactiveFormsModule,
+    MatProgressBarModule,
 
   ],
-  providers: [],
+  providers: [
+    [{ provide: HTTP_INTERCEPTORS, useClass: TimeoutInterceptor, multi: true }],
+    [{ provide: DEFAULT_TIMEOUT, useValue: 30000 }]
+  ],
   bootstrap: [AppComponent],
   entryComponents: [AnimationComponent]
 })

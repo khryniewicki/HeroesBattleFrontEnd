@@ -1,1 +1,25 @@
-<p>game-settings-panel works!</p>
+<div class="container-fluid">
+  <button mat-raised-button class="mat-primary m-5 " (click)="emptyRoom()">CLEAR ROOM</button>
+  <button mat-raised-button class="mat-primary m-5 " (click)="initMap()">START</button>
+  <button mat-raised-button class="mat-warn m-5 " (click)="stopMap()">STOP</button>
+  <button mat-raised-button class="mat-primary m-5 " (click)="test()">ADD TESTING DUMB</button>
+
+  <form [formGroup]="setTimeLogOutForm" class="example-form" (ngSubmit)="setLogoutTime(setTimeLogOutForm.value)">
+    <mat-form-field class="example-full-width">
+      <mat-label>CHANGE TIME TO LOG OUT</mat-label>
+      <input type="number" formControlName="time" matInput placeholder="180">
+    </mat-form-field>
+    <button mat-raised-button class="mat-primary m-5 "  type="submit">SUBMIT</button>
+  </form>
+
+  <form [formGroup]="setTimeLogOutInGameForm" class="example-form" (ngSubmit)="setLogoutTimeInGame(setTimeLogOutInGameForm.value)">
+    <mat-form-field class="example-full-width">
+      <mat-label>CHANGE TIME TO LOG OUT FROM GAME</mat-label>
+      <input type="number" matInput formControlName="time" placeholder="30">
+    </mat-form-field>
+    <button mat-raised-button class="mat-primary m-5 "  type="submit">SUBMIT</button>
+
+  </form>
+
+
+</div>

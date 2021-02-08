@@ -27,6 +27,7 @@
     "@videogular/ngx-videogular": "^2.1.0",
     "angular-routing": "^0.3.1",
     "bootstrap": "^4.5.3",
+    "file-saver": "^2.0.5",
     "http-server": "^0.12.3",
     "jquery": "^3.5.1",
     "ng2-cookies": "^1.0.12",
@@ -35,7 +36,6 @@
     "rxjs": "^6.6.3",
     "rxjs-observable": "0.0.7",
     "tslib": "^2.0.0",
-    "videogular2": "^7.0.2",
     "zone.js": "~0.10.2"
   },
   "devDependencies": {

@@ -1,0 +1,7 @@
+{
+  "/api": {
+    "target": "https://heroes.khryniewicki.com.pl/",
+    "secure": true,
+    "changeOrigin": true
+  }
+}

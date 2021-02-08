@@ -65,7 +65,7 @@
             </div>
             <div class=" col-3">
               <button mat-raised-button class=" btn_animation "
-                      (click)="animate(i);"> {{!mageAnimationActive ? 'Show animation' : 'Hide animation'}}</button>
+                      (click)="animate(i);"> {{(!mageAnimationActive ? 'button_show_animation' : 'button_hide_animation') | translate  }}</button>
             </div>
           </div>
         </div>
@@ -92,7 +92,7 @@
             </div>
             <div class=" col-3">
               <button mat-raised-button class=" btn_animation"
-                      (click)="animate(i);"> {{!fallenAnimationActive ? 'Show animation' : 'Hide animation'}}</button>
+                      (click)="animate(i);"> {{(!fallenAnimationActive ? 'button_show_animation' : 'button_hide_animation') | translate }}</button>
             </div>
           </div>
         </div>

@@ -1,5 +1,3 @@
-
-
 <div class="container-fluid">
   <mat-tab-group animationDuration="0ms" mat-align-tabs="center">
     <mat-tab label="Windows">
@@ -55,7 +53,8 @@
               <br><br>
               {{'Ins_text_21' | translate}}  <b> OK </b>. <br><br>
               <b class="text-danger">  {{'Ins_text_22' | translate}}</b><br><br>
-              <a href="https://www.ibm.com/support/knowledgecenter/SS3JSW_5.2.0/com.ibm.help.gdha_installing.doc/com.ibm.help.gdha_installing.doc/gdha_setting_java_variable_win.html">
+              <a
+                href="https://www.ibm.com/support/knowledgecenter/SS3JSW_5.2.0/com.ibm.help.gdha_installing.doc/com.ibm.help.gdha_installing.doc/gdha_setting_java_variable_win.html">
                 {{'Ins_text_23' | translate}}</a>
 
             </mat-expansion-panel>
@@ -71,13 +70,15 @@
                 <li> {{'Ins_text2_3' | translate}}</li>
                 <li> {{'Ins_text2_4' | translate}}</li>
               </ul>
-              <button mat-raised-button class="mat-primary m-5 " (click)="download2('heroes_battle_windows.zip')">
+              <div class="file">
+                <button mat-raised-button color="primary" (click)="downloadResource('heroes_battle_windows.zip')" >{{'Ins_text_download' | translate}}
+                </button>
+              </div>
+              <mat-progress-bar class="my-4" *ngIf="download$ | async as download"
+                                [mode]="download.state == 'PENDING' ? 'buffer' : 'determinate'"
+                                [value]="download.progress">
+              </mat-progress-bar>
 
-                {{'Ins_text_download' | translate}}
-              </button>
-              <button mat-raised-button class="mat-primary m-5 " (click)="download('heroes_battle_windows.zip')">
-TEST
-              </button>
             </mat-expansion-panel>
           </mat-accordion>
 
@@ -109,17 +110,20 @@ TEST
 
               <p>{{'Ins_linux_text1' | translate}} <br><br>
 
-                {{'Ins_linux_text2' | translate}} <b>{{'Ins_linux_text3' | translate}}</b> {{'Ins_linux_text4' | translate}}<br>
+                {{'Ins_linux_text2' | translate}}
+                <b>{{'Ins_linux_text3' | translate}}</b> {{'Ins_linux_text4' | translate}}<br>
                 {{'Ins_linux_text5' | translate}} <br> <br>
-                {{'Ins_linux_text2' | translate}} <b>{{'Ins_linux_text6' | translate}}</b> {{'Ins_linux_text7' | translate}}<br>
+                {{'Ins_linux_text2' | translate}}
+                <b>{{'Ins_linux_text6' | translate}}</b> {{'Ins_linux_text7' | translate}}<br>
                 {{'Ins_linux_text8' | translate}}<br><br>
                 {{'Ins_linux_text9' | translate}} <br>
                 {{'Ins_linux_text10' | translate}}<br>
                 {{'Ins_linux_text11' | translate}}<br><br>
                 {{'Ins_linux_text12' | translate}}</p>
-                <p class="text-danger"><b> {{"Ins_text_22" | translate}}</b></p><br>
-                <a href="https://www.ibm.com/support/knowledgecenter/SS3JSW_5.2.0/com.ibm.help.gdha_installing.doc/com.ibm.help.gdha_installing.doc/gdha_setting_java_variable_linux.html">
-                  {{'Ins_text_23' | translate}}</a>
+              <p class="text-danger"><b> {{"Ins_text_22" | translate}}</b></p><br>
+              <a
+                href="https://www.ibm.com/support/knowledgecenter/SS3JSW_5.2.0/com.ibm.help.gdha_installing.doc/com.ibm.help.gdha_installing.doc/gdha_setting_java_variable_linux.html">
+                {{'Ins_text_23' | translate}}</a>
 
 
             </mat-expansion-panel>
@@ -135,7 +139,7 @@ TEST
                 <li> {{'Ins_text2_3' | translate}}</li>
                 <li> {{'Ins_text2_4' | translate}}</li>
               </ul>
-              <button mat-raised-button class="mat-primary m-5 " (click)="download2('heroes_battle_linux.zip')">
+              <button mat-raised-button class="mat-primary m-5 " (click)="downloadResource('heroes_battle_linux.zip')">
                 {{'Ins_text_download' | translate}}
               </button>
 

@@ -23,21 +23,18 @@ export class RoleguardService implements CanActivate {
     } else {
       return credentials && this.auth.checkRole().pipe(map(e => {
         if (e) {
-          console.log(e.credentials);
           if (e.credentials) {
             return true;
           } else {
-            alert('Invalid credentials');
+            alert('Invalid credentials. Only admin can enter!');
             return false;
           }
         }
       }, error => {
         console.log(error);
-        // this.router.navigate(['/home']);
+        // this.router.navigate(['home']);
         return false;
       }));
     }
-
-
   }
 }

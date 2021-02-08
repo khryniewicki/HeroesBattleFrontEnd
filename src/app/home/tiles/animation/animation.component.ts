@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {VgAPI} from 'videogular2/compiled/src/core/services/vg-api';
+import {VgApiService} from '@videogular/ngx-videogular/core';
 
 @Component({
   selector: 'app-animation',
@@ -12,7 +12,7 @@ export class AnimationComponent implements OnInit {
   hero: string;
   bgImage: string;
   bgImageDefault = ' url(' + this.bubbles4 + ')';
-  api: VgAPI;
+  api: VgApiService;
 
   private getBubbleBg(hero: string): string {
     switch (hero) {
@@ -40,7 +40,7 @@ export class AnimationComponent implements OnInit {
   }
 
   // tslint:disable-next-line:typedef
-  onPlayerReady(api: VgAPI) {
+  onPlayerReady(api: VgApiService) {
     this.api = api;
     this.api.getDefaultMedia().subscriptions.loadedMetadata.subscribe(
       this.playVideo.bind(this)

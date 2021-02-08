@@ -8,11 +8,8 @@ import {Observable} from 'rxjs';
   providedIn: 'root'
 })
 export class AuthguardService implements CanActivate {
-  path = 'http://localhost:8085/auth/realms/heroes_battle/protocol/openid-connect/auth?response_type=code&client_id=';
-
   constructor(public auth: AuthenticationService, public router: Router) {
   }
-
 
   // tslint:disable-next-line:typedef
   canActivate(route: ActivatedRouteSnapshot): Observable<boolean> | boolean {

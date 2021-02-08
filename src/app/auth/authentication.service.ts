@@ -3,7 +3,6 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Cookie} from 'ng2-cookies';
 import {Observable} from 'rxjs';
 import {Router} from '@angular/router';
-import {take} from 'rxjs/operators';
 
 export class Msg {
   'content': string;
@@ -17,17 +16,21 @@ export class Authentication {
   providedIn: 'root'
 })
 export class AuthenticationService {
+  // public authHost = 'http://localhost:8085';
+  public authHost = 'https://heroes-battle-auth.khryniewicki.pl';
+  // public resourceHost = 'http://localhost:8445';
+  public resourceHost = 'https://heroes-battle-res.khryniewicki.pl';
+  // public localHost = 'https://heroes-battle.khryniewicki.pl/';
+  public localHost = 'http://localhost:4200';
+
+  public authServerUrl = this.authHost + '/auth/realms/heroes_battle/protocol';
+  private resourceServerUrl = this.resourceHost + '/resource-server';
+  private checkRoleUrl = '/api/option/check-role';
+  public clientId = 'login-app';
 
   constructor(
-    // tslint:disable-next-line:variable-name
-    private _http: HttpClient, private router: Router) {
+    private http: HttpClient, private router: Router) {
   }
-
-  public clientId = 'login-app';
-  public localhost = 'http://localhost:4200/';
-  public authserverUrl = 'http://localhost:8085/auth/realms/heroes_battle/protocol';
-  private resourceServerUrl = 'http://localhost:8445/resource-server';
-  private checkRoleUrl = '/check-role';
 
   // tslint:disable-next-line:typedef
   private static authrization_bearer() {
@@ -42,17 +45,17 @@ export class AuthenticationService {
     const params = new URLSearchParams();
     params.append('grant_type', 'authorization_code');
     params.append('client_id', this.clientId);
-    params.append('client_secret', '8b1b083d-f4df-4700-a825-9e2c47cc3753');
-    params.append('redirect_uri', this.localhost);
+    params.append('client_secret', '913dffb6-2d67-4863-a2ee-02f0d4a39113');
+    params.append('redirect_uri', this.localHost);
     params.append('code', code);
 
     const headers = new HttpHeaders({'Content-type': 'application/x-www-form-urlencoded; charset=utf-8'});
-    this._http.post(this.authserverUrl + '/openid-connect/token', params.toString(), {headers})
+    this.http.post(this.authServerUrl + '/openid-connect/token', params.toString(), {headers})
       .subscribe(
         data => {
           this.saveToken(data);
         },
-        err => alert('Invalid Credentials' + err)
+        err => console.log('Invalid Credentials' + err)
       );
   }
 
@@ -68,13 +71,16 @@ export class AuthenticationService {
   getResource(resourceUrl): Observable<Msg> {
     console.log(this.resourceServerUrl + resourceUrl);
     const headers = AuthenticationService.authrization_bearer();
-    return this._http.get<Msg>(this.resourceServerUrl + resourceUrl, {headers});
+    return this.http.get<Msg>(this.resourceServerUrl + resourceUrl, {headers});
   }
 
-  getResource2(resourceUrl): Observable<Blob> {
+  // tslint:disable-next-line:typedef
+  getResource2(resourceUrl) {
     console.log(this.resourceServerUrl + resourceUrl);
     const headers = AuthenticationService.authrization_bearer();
-    return this._http.get(this.resourceServerUrl + resourceUrl, {headers, responseType: 'blob'});
+    headers.append('timeout', `${200000}`);
+    return this.http.get(this.resourceServerUrl + resourceUrl,
+      {headers, responseType: 'blob', reportProgress: true,   observe: 'events'});
   }
 
   // tslint:disable-next-line:typedef
@@ -89,14 +95,16 @@ export class AuthenticationService {
     const token = Cookie.get('refresh_token');
     Cookie.delete('access_token');
     Cookie.delete('refresh_token');
-    window.location.href = this.authserverUrl + '/openid-connect/logout?' +
-      'client_id=' + this.clientId + '&refresh_token=' + +token + '&post_logout_redirect_uri=' + this.localhost;
+    window.location.href = this.authServerUrl + '/openid-connect/logout?' +
+      'client_id=' + this.clientId + '&refresh_token=' + +token + '&post_logout_redirect_uri=' + this.localHost;
   }
 
 // tslint:disable-next-line:typedef
   login2() {
-    const path = this.authserverUrl + '/openid-connect/auth?response_type=code&' +
-      '&client_id=' + this.clientId + '&scope=openid%20user' + '&redirect_uri=' + this.localhost;
+    const path = this.authServerUrl + '/openid-connect/auth?response_type=code&' +
+      '&client_id=' + this.clientId
+      + '&scope=openid%20user'
+      + '&redirect_uri=' + this.localHost;
     const time = 2000;
     this.router.navigate(['redirect']);
     setTimeout(() => window.location.href = path, time);
@@ -104,7 +112,7 @@ export class AuthenticationService {
 
 // tslint:disable-next-line:typedef
   login() {
-    Cookie.set('redirect', this.localhost);
+    Cookie.set('redirect', this.localHost);
     this.login2();
   }
 
@@ -116,6 +124,6 @@ export class AuthenticationService {
   // tslint:disable-next-line:typedef
   checkRole() {
     const headers = AuthenticationService.authrization_bearer();
-    return this._http.get<Authentication>(this.resourceServerUrl + this.checkRoleUrl, {headers});
+    return this.http.get<Authentication>(this.resourceServerUrl + this.checkRoleUrl, {headers});
   }
 }
