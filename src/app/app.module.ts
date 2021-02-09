@@ -40,8 +40,10 @@ import {APP_BASE_HREF} from '@angular/common';
 import {MatBadgeModule} from '@angular/material/badge';
 import {MatTooltipModule} from '@angular/material/tooltip';
 
-export const materialComponents = [MatListModule, MatButtonModule, MatIconModule, MatSidenavModule, MatToolbarModule, MatSlideToggleModule,
-  FormsModule, MatGridListModule, MatButtonToggleModule, MatCardModule];
+export const materialComponents = [MatListModule, MatButtonModule, MatIconModule, MatSidenavModule, MatToolbarModule,
+  MatSlideToggleModule, FormsModule, MatGridListModule, MatButtonToggleModule, MatCardModule, MatExpansionModule,
+  MatTabsModule, MatProgressSpinnerModule, MatFormFieldModule, MatInputModule, ReactiveFormsModule,
+  MatProgressBarModule, MatBadgeModule, MatTooltipModule];
 
 @NgModule({
   declarations: [
@@ -68,15 +70,7 @@ export const materialComponents = [MatListModule, MatButtonModule, MatIconModule
         deps: [HttpClient]
       }
     }),
-    MatExpansionModule,
-    MatTabsModule,
-    MatProgressSpinnerModule,
-    MatFormFieldModule,
-    MatInputModule,
-    ReactiveFormsModule,
-    MatProgressBarModule,
-    MatBadgeModule,
-    MatTooltipModule,
+
 
   ],
   providers: [
