@@ -16,7 +16,7 @@ export class RoleguardService implements CanActivate {
     const credentials = this.auth.checkCredentials();
 
     if (!credentials) {
-      this.auth.login2();
+      this.auth.loginInKeyCloak();
       const path1 = route.url.pop().path;
       this.auth.setRedirectCookie(path1);
       return false;

@@ -31,11 +31,14 @@ import {DownloadComponent} from './download/download.component';
 import {SafePipe} from './utils/SafePipeIframe';
 import {RedirectComponent} from './redirect/redirect.component';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
-import { GameSettingsPanelComponent } from './game-settings-panel/game-settings-panel.component';
+import {GameSettingsPanelComponent} from './game-settings-panel/game-settings-panel.component';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
-import {DEFAULT_TIMEOUT, TimeoutInterceptor} from './utils/timeout/timeout-interceptor.service';
+import {DEFAULT_TIMEOUT, TimeoutInterceptor} from './services/timeout/timeout-interceptor.service';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
+import {APP_BASE_HREF} from '@angular/common';
+import {MatBadgeModule} from '@angular/material/badge';
+import {MatTooltipModule} from '@angular/material/tooltip';
 
 export const materialComponents = [MatListModule, MatButtonModule, MatIconModule, MatSidenavModule, MatToolbarModule, MatSlideToggleModule,
   FormsModule, MatGridListModule, MatButtonToggleModule, MatCardModule];
@@ -72,11 +75,14 @@ export const materialComponents = [MatListModule, MatButtonModule, MatIconModule
     MatInputModule,
     ReactiveFormsModule,
     MatProgressBarModule,
+    MatBadgeModule,
+    MatTooltipModule,
 
   ],
   providers: [
-    [{ provide: HTTP_INTERCEPTORS, useClass: TimeoutInterceptor, multi: true }],
-    [{ provide: DEFAULT_TIMEOUT, useValue: 30000 }]
+    [{provide: APP_BASE_HREF, useValue: '/'}],
+    [{provide: HTTP_INTERCEPTORS, useClass: TimeoutInterceptor, multi: true}],
+    [{provide: DEFAULT_TIMEOUT, useValue: 30000}]
   ],
   bootstrap: [AppComponent],
   entryComponents: [AnimationComponent]

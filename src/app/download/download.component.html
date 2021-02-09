@@ -70,9 +70,10 @@
                 <li> {{'Ins_text2_3' | translate}}</li>
                 <li> {{'Ins_text2_4' | translate}}</li>
               </ul>
-              <div class="file">
-                <button mat-raised-button color="primary" (click)="downloadResource('heroes_battle_windows.zip')" >{{'Ins_text_download' | translate}}
+              <div class="row">
+                <button mat-raised-button class="mx-3" color="primary" (click)="downloadResource('heroes_battle_windows.zip')" >{{'Ins_text_download' | translate}}
                 </button>
+                <p class="mx-3 text-danger my-3">SIZE: 286.99 MB</p>
               </div>
               <mat-progress-bar class="my-4" *ngIf="download$ | async as download"
                                 [mode]="download.state == 'PENDING' ? 'buffer' : 'determinate'"

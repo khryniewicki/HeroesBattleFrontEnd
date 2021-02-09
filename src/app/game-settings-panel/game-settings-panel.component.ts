@@ -36,28 +36,28 @@ export class GameSettingsPanelComponent implements OnInit {
 
   // tslint:disable-next-line:typedef
   emptyRoom() {
-    this.auth.getResource(this.emptyRoomUrl).subscribe(
+    this.auth.getMsg(this.emptyRoomUrl).subscribe(
       p => console.log(p),
       error => console.log(error));
   }
 
   // tslint:disable-next-line:typedef
   initMap() {
-    this.auth.getResource(this.initMapUrl).subscribe(
+    this.auth.getMsg(this.initMapUrl).subscribe(
       p => console.log(p),
       error => console.log(error));
   }
 
   // tslint:disable-next-line:typedef
   stopMap() {
-    this.auth.getResource(this.stopMapUrl).subscribe(
+    this.auth.getMsg(this.stopMapUrl).subscribe(
       p => console.log(p),
       error => console.log(error));
   }
 
   // tslint:disable-next-line:typedef
   test() {
-    this.auth.getResource(this.testUrl).subscribe(
+    this.auth.getMsg(this.testUrl).subscribe(
       p => console.log(p),
       error => console.log(error));
   }
@@ -66,7 +66,7 @@ export class GameSettingsPanelComponent implements OnInit {
   setLogoutTime(timeHolder: TimeHolder) {
     const time = timeHolder.time;
     console.log(time);
-    this.auth.getResource(this.setLogoutTimeUrl + '?time=' + time).subscribe(
+    this.auth.getMsg(this.setLogoutTimeUrl + '?time=' + time).subscribe(
       p => console.log(p),
       error => console.log(error));
   }
@@ -77,7 +77,7 @@ export class GameSettingsPanelComponent implements OnInit {
 
     console.log(time);
 
-    this.auth.getResource(this.setLogoutTimeInGameUrl + '?time=' + time).subscribe(
+    this.auth.getMsg(this.setLogoutTimeInGameUrl + '?time=' + time).subscribe(
       p => console.log(p),
       error => console.log(error));
   }

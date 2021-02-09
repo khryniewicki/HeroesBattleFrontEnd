@@ -17,9 +17,9 @@ const routes: Routes = [
   {path: 'server', component: ServerComponent},
   {path: 'web', component: WebComponent},
   {path: 'redirect', component: RedirectComponent},
-  {path: 'download', component: DownloadComponent, canActivate: [ AuthguardService]},
-  {path: 'game-settings-panel', component: GameSettingsPanelComponent, canActivate: [ RoleguardService]},
-  {path: '**', component: HomeComponent},
+  {path: 'download', component: DownloadComponent, canActivate: [ AuthguardService], runGuardsAndResolvers: 'always'},
+  {path: 'game-settings-panel', component: GameSettingsPanelComponent, canActivate: [ RoleguardService], runGuardsAndResolvers: 'always'},
+   // {path: '**', redirectTo: 'home'},
 ];
 
 @NgModule({

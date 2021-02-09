@@ -10,9 +10,8 @@ import {
 import {AnimationComponent} from './tiles/animation/animation.component';
 import {NavbarComponent} from '../navbar/navbar.component';
 import {Router} from '@angular/router';
-import {AuthenticationService} from '../auth/authentication.service';
-import {AuthguardService} from '../auth/authguard.service';
-import {SubjectService} from '../subject.service';
+import {SubjectService} from '../services/subject/subject.service';
+import {DownloadService} from '../services/download/download.service';
 
 
 export interface Tile {
@@ -43,7 +42,6 @@ export class HomeComponent {
   fallen: string;
   mageAnimationActive: boolean;
   fallenAnimationActive: boolean;
-
   @ViewChild('parent', {read: ViewContainerRef}) target: ViewContainerRef;
 
   tiles: Tile[] = [
@@ -54,7 +52,7 @@ export class HomeComponent {
 
   // tslint:disable-next-line:max-line-length
   constructor(private el: ElementRef, private componentFactoryResolver: ComponentFactoryResolver, private subject: SubjectService,
-              private auth: AuthenticationService, private router: Router) {
+              private router: Router) {
     this.mage = 'fire_wizard';
     this.fallen = 'fallen_king';
   }
@@ -185,6 +183,7 @@ export class HomeComponent {
   move_to_download() {
     this.router.navigate(['download']);
   }
+
 }
 
 

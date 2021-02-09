@@ -1,25 +1,29 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {BreakpointObserver} from '@angular/cdk/layout';
 import {TranslateService} from '@ngx-translate/core';
 import {MatSlideToggleChange} from '@angular/material/slide-toggle';
-import {AuthenticationService} from '../auth/authentication.service';
+import {AuthenticationService, ExtendedMessage, Msg} from '../auth/authentication.service';
 import {Router} from '@angular/router';
 import {Cookie} from 'ng2-cookies';
+import {DownloadService} from '../services/download/download.service';
 
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.scss']
 })
-export class NavbarComponent implements OnInit {
+export class NavbarComponent implements OnInit, OnDestroy {
   isChecked: boolean;
   lang: string;
   public isLoggedIn = false;
   public isAdmin = false;
+  extended: ExtendedMessage;
+  interval;
+  serverGauge;
 
   // tslint:disable-next-line:max-line-length
   constructor(private breakpointObserver: BreakpointObserver, public translate: TranslateService,
-              private authService: AuthenticationService, private router: Router) {
+              private authService: AuthenticationService, private router: Router, private downloadService: DownloadService) {
     translate.addLangs(['en', 'pl']);
     translate.setDefaultLang('pl');
     this.lang = 'PL';
@@ -31,12 +35,33 @@ export class NavbarComponent implements OnInit {
     }
   }
 
+// tslint:disable-next-line:typedef
+  ngOnInit() {
+    this.getExtended();
+
+    this.isLoggedIn = this.authService.checkCredentials();
+    if (this.isLoggedIn) {
+      this.checkRole();
+    }
+    const i = window.location.href.indexOf('code');
+    // tslint:disable-next-line:triple-equals
+    if (!this.isLoggedIn && i != -1) {
+      const s = window.location.href.substring(i + 5);
+      this.authService.retrieveToken(s);
+    }
+  }
+
+  ngOnDestroy(): void {
+    clearInterval(this.interval);
+  }
+
   // tslint:disable-next-line:typedef
   switchLang(event: MatSlideToggleChange) {
     const checked = event.checked;
     this.setLanguage(checked);
     Cookie.set('language', this.lang);
   }
+
 
   // tslint:disable-next-line:typedef
   private setLanguage(checked: boolean) {
@@ -59,18 +84,21 @@ export class NavbarComponent implements OnInit {
     );
   }
 
-  // tslint:disable-next-line:typedef
-  ngOnInit() {
-    this.isLoggedIn = this.authService.checkCredentials();
-    if (this.isLoggedIn) {
-      this.checkRole();
-    }
-    const i = window.location.href.indexOf('code');
-    // tslint:disable-next-line:triple-equals
-    if (!this.isLoggedIn && i != -1) {
-      const s = window.location.href.substring(i + 5);
-      this.authService.retrieveToken(s);
-    }
+
+// tslint:disable-next-line:typedef
+  getExtended() {
+    this.interval = setInterval(() =>
+      this.downloadService.getExtendedMessage().subscribe((data => {
+        this.extended = data;
+        if (this.extended.heroesMap) {
+          const map = new Map<string, Msg>();
+          // tslint:disable-next-line:forin
+          for (const entry in data.heroesMap) {
+            map.set(entry, data.heroesMap[entry]);
+          }
+          this.extended.heroesMap = map;
+        }
+      })), 1000);
   }
 
   // tslint:disable-next-line:typedef
@@ -97,4 +125,6 @@ export class NavbarComponent implements OnInit {
   download() {
     this.router.navigate(['download']);
   }
+
+
 }

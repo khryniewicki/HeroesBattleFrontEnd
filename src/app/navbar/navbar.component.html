@@ -8,7 +8,8 @@
       <a mat-list-item class=" pointer active" *ngIf="!isLoggedIn" (click)="login()">{{'Log-in' | translate}}</a>
       <ng-container *ngIf="isLoggedIn">
         <a mat-list-item class="pointer  active" (click)="download()">{{'Download' | translate}}</a>
-        <a mat-list-item class="pointer  active" *ngIf="isAdmin" (click)="game_panel()">{{'GameSettings' | translate}}</a>
+        <a mat-list-item class="pointer  active" *ngIf="isAdmin"
+           (click)="game_panel()">{{'GameSettings' | translate}}</a>
         <a mat-list-item class="pointer  active" (click)="account()">{{'Account' | translate}}</a>
         <a mat-list-item class="pointer  active" (click)="logout()" routerLink="">{{'Log-out' | translate}}</a>
       </ng-container>
@@ -18,6 +19,22 @@
 
     <div class=" upper-nav ">
       <span class="lang form-inline px-3 ">
+      <div class="px-0" *ngIf="extended && extended.heroesMap; else serverOff">
+          <h3 class="text-white ">Server<span class="badge badge-pill serverOn mx-1 ">ON</span></h3>
+      </div>
+       <ng-template #serverOff>
+         <h3 class="text-white">Server
+          <span class="badge badge-pill badge-danger mx-1 default_cursor">OFF</span></h3></ng-template>
+          <div class="server">
+        <ng-container *ngIf="extended && extended.heroesMap">
+          <mat-icon matBadge="{{extended.heroesMap.size}}" class="text-white mx-3 default_cursor"
+                    matTooltip="Players online" matTooltipPosition='left'>accessibility</mat-icon>
+          <ng-container *ngIf="extended.heroesMap.size>0">
+          <mat-icon matBadge="{{this.extended.timeLeft}}" matBadgeColor="warn" class="text-white mx-3 default_cursor"
+                    matTooltip="Time to clear room" matTooltipPosition='left'>restart_alt</mat-icon>
+            </ng-container>
+        </ng-container>
+        </div>
   <mat-slide-toggle class="  text-light" [(ngModel)]="isChecked"
                     (change)="switchLang($event)">{{lang}}
   </mat-slide-toggle>
@@ -36,7 +53,8 @@
         <a mat-list-item class="pointer active" *ngIf="!isLoggedIn" (click)="login()">{{'Log-in' | translate}}</a>
         <ng-container *ngIf="isLoggedIn">
           <a mat-list-item class="pointer  active" (click)="download()">{{'Download' | translate}}</a>
-          <a mat-list-item class="pointer  active" *ngIf="isAdmin" (click)="game_panel()">{{'GameSettings' | translate}}</a>
+          <a mat-list-item class="pointer  active" *ngIf="isAdmin"
+             (click)="game_panel()">{{'GameSettings' | translate}}</a>
 
           <a mat-list-item class="pointer  active" (click)="account()">{{'Account' | translate}}</a>
           <a mat-list-item class="pointer  active" (click)="logout()" routerLink="">{{'Log-out' | translate}}</a>
@@ -51,3 +69,6 @@
     </mat-toolbar>
   </mat-sidenav-content>
 </mat-sidenav-container>
+<ng-template #serverOffline>
+  <p class="text-danger">Server offline</p>
+</ng-template>

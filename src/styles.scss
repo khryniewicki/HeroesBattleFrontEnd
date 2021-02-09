@@ -90,6 +90,7 @@ mat-toolbar {
   flex: 1 1 auto;
 }
 .lang{
+  margin-bottom: -30px;
   float: right;
 }
 
@@ -146,4 +147,7 @@ mat-toolbar {
 }
 .pointer{
   cursor: pointer;
+}
+.default_cursor{
+  cursor: default;
 }

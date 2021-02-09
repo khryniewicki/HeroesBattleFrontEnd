@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, OnDestroy} from '@angular/core';
 import {NavigationEnd, Router} from '@angular/router';
 
 @Component({
@@ -6,17 +6,23 @@ import {NavigationEnd, Router} from '@angular/router';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnDestroy {
   title = 'HeroesBattleFrontEnd';
   mySubscription;
 
   constructor(private router: Router) {
     this.mySubscription = this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
-        // Trick the Router into believing it's last link wasn't previously loaded
-        this.router.navigated = false;
+        this.router.navigated = true;
       }
     });
-
   }
+
+  ngOnDestroy(): void {
+    if (this.mySubscription) {
+      this.mySubscription.unsubscribe();
+    }
+  }
+
+
 }

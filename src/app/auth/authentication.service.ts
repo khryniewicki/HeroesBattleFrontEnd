@@ -20,8 +20,8 @@ export class AuthenticationService {
   public authHost = 'https://heroes-battle-auth.khryniewicki.pl';
   // public resourceHost = 'http://localhost:8445';
   public resourceHost = 'https://heroes-battle-res.khryniewicki.pl';
-  // public localHost = 'https://heroes-battle.khryniewicki.pl/';
   public localHost = 'http://localhost:4200';
+  // public localHost = 'https://heroes-battle.khryniewicki.pl/';
 
   public authServerUrl = this.authHost + '/auth/realms/heroes_battle/protocol';
   private resourceServerUrl = this.resourceHost + '/resource-server';
@@ -68,19 +68,23 @@ export class AuthenticationService {
     Cookie.delete('redirect');
   }
 
-  getResource(resourceUrl): Observable<Msg> {
+  getMsg(resourceUrl): Observable<Msg> {
     console.log(this.resourceServerUrl + resourceUrl);
     const headers = AuthenticationService.authrization_bearer();
     return this.http.get<Msg>(this.resourceServerUrl + resourceUrl, {headers});
   }
 
+  getExtendedMsg(resourceUrl): Observable<ExtendedMessage> {
+    return this.http.get<ExtendedMessage>(this.resourceServerUrl + resourceUrl);
+  }
+
   // tslint:disable-next-line:typedef
-  getResource2(resourceUrl) {
+  getResource(resourceUrl) {
     console.log(this.resourceServerUrl + resourceUrl);
     const headers = AuthenticationService.authrization_bearer();
     headers.append('timeout', `${200000}`);
     return this.http.get(this.resourceServerUrl + resourceUrl,
-      {headers, responseType: 'blob', reportProgress: true,   observe: 'events'});
+      {headers, responseType: 'blob', reportProgress: true, observe: 'events'});
   }
 
   // tslint:disable-next-line:typedef
@@ -100,12 +104,10 @@ export class AuthenticationService {
   }
 
 // tslint:disable-next-line:typedef
-  login2() {
-    const path = this.authServerUrl + '/openid-connect/auth?response_type=code&' +
-      '&client_id=' + this.clientId
-      + '&scope=openid%20user'
-      + '&redirect_uri=' + this.localHost;
+  loginInKeyCloak() {
     const time = 2000;
+    const path = this.authServerUrl + '/openid-connect/auth?response_type=code&' +
+      '&client_id=' + this.clientId + '&scope=openid%20user' + '&redirect_uri=' + this.localHost;
     this.router.navigate(['redirect']);
     setTimeout(() => window.location.href = path, time);
   }
@@ -113,7 +115,7 @@ export class AuthenticationService {
 // tslint:disable-next-line:typedef
   login() {
     Cookie.set('redirect', this.localHost);
-    this.login2();
+    this.loginInKeyCloak();
   }
 
   // tslint:disable-next-line:typedef
@@ -126,4 +128,10 @@ export class AuthenticationService {
     const headers = AuthenticationService.authrization_bearer();
     return this.http.get<Authentication>(this.resourceServerUrl + this.checkRoleUrl, {headers});
   }
+
+}
+
+export class ExtendedMessage {
+  heroesMap: Map<string, Msg> = new Map<string, Msg>();
+  timeLeft: number;
 }
