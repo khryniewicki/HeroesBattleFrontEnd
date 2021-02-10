@@ -11,7 +11,6 @@ import {AnimationComponent} from './tiles/animation/animation.component';
 import {NavbarComponent} from '../navbar/navbar.component';
 import {Router} from '@angular/router';
 import {SubjectService} from '../services/subject/subject.service';
-import {DownloadService} from '../services/download/download.service';
 
 
 export interface Tile {
@@ -21,6 +20,15 @@ export interface Tile {
   bg: string;
   class: string;
   id?: string;
+}
+
+export interface Hero {
+  name: string;
+  prettyName: string;
+  basicSpell: string;
+  basicSpellImage: string;
+  ultimateSpell: string;
+  ultimateSpellImage: string;
 }
 
 @Component({
@@ -38,8 +46,8 @@ export class HomeComponent {
   bubbles3 = 'assets/bg/bubbles3.png';
   // tslint:disable-next-line:typedef
   private componentRef: ComponentRef<any>;
-  mage: string;
-  fallen: string;
+  mage: Hero;
+  fallen: Hero;
   mageAnimationActive: boolean;
   fallenAnimationActive: boolean;
   @ViewChild('parent', {read: ViewContainerRef}) target: ViewContainerRef;
@@ -49,19 +57,48 @@ export class HomeComponent {
     {cols: 2, rows: 2, color: 'black', bg: ' url(' + this.bubbles2 + ')', class: 'tile'},
     {cols: 2, rows: 2, color: 'black', bg: ' url(' + this.bubbles3 + ')', class: 'tile'},
   ];
+  heroes: Hero[] = [
+    {
+      name: 'fire_wizard', prettyName: 'Fire Mage', basicSpell: 'Fire', basicSpellImage: 'fire',
+      ultimateSpell: 'FireBomb', ultimateSpellImage: 'firebomb'
+    },
+    {
+      name: 'ice_wizard', prettyName: 'Ice Mage', basicSpell: 'Ice Bolt', basicSpellImage: 'icebolt',
+      ultimateSpell: 'Ice Berg', ultimateSpellImage: 'iceberg'
+    },
+    {
+      name: 'thunder_wizard', prettyName: 'Thunder Mage', basicSpell: 'Thunderbolt', basicSpellImage: 'thunderbolt',
+      ultimateSpell: 'Lightning', ultimateSpellImage: 'lightning'
+    },
+    {
+      name: 'fallen_king', prettyName: 'Fallen King', basicSpell: 'Black Fire', basicSpellImage: 'blackfire',
+      ultimateSpell: 'Skull Curse', ultimateSpellImage: 'skullcurse'
+    },
+    {
+      name: 'fallen_witcher', prettyName: 'Fallen Witcher', basicSpell: 'Electric Shock', basicSpellImage: 'electricshock',
+      ultimateSpell: 'Electric Bomb', ultimateSpellImage: 'electricbomb'
+    },
+    {
+      name: 'fallen_monk', prettyName: 'Fallen Monk', basicSpell: 'Frost fury', basicSpellImage: 'frostfury',
+      ultimateSpell: 'Bloody Whip', ultimateSpellImage: 'bloodywhip'
+    }
+  ];
 
   // tslint:disable-next-line:max-line-length
   constructor(private el: ElementRef, private componentFactoryResolver: ComponentFactoryResolver, private subject: SubjectService,
               private router: Router) {
-    this.mage = 'fire_wizard';
-    this.fallen = 'fallen_king';
+    this.mage = this.getHero('fire_wizard');
+    this.fallen = this.getHero('fallen_king');
   }
 
+  // tslint:disable-next-line:typedef
+  getHero(value: string): Hero {
+    return this.heroes.find(hero => hero.name === value);
+  }
 
 // tslint:disable-next-line:typedef
   edit(value: string) {
-    this.mage = value;
-
+    this.mage = this.getHero(value);
     if (this.mageAnimationActive) {
       this.animation_turn_off(1);
       this.destroy_animation();
@@ -70,7 +107,7 @@ export class HomeComponent {
 
   // tslint:disable-next-line:typedef
   edit2(value: string) {
-    this.fallen = value;
+    this.fallen = this.getHero(value);
     if (this.fallenAnimationActive) {
       this.animation_turn_off(2);
       this.destroy_animation();
@@ -93,9 +130,9 @@ export class HomeComponent {
       } else {
         if (this.fallenAnimationActive) {
           this.animation_turn_off(num + 1);
-          this.destroy_and_create(this.mage, num);
+          this.destroy_and_create(this.mage.name, num);
         } else {
-          this.create_animation(this.mage);
+          this.create_animation(this.mage.name);
           this.animation_turn_on(num);
         }
       }
@@ -106,9 +143,9 @@ export class HomeComponent {
       } else {
         if (this.mageAnimationActive) {
           this.animation_turn_off(num - 1);
-          this.destroy_and_create(this.fallen, num);
+          this.destroy_and_create(this.fallen.name, num);
         } else {
-          this.create_animation(this.fallen);
+          this.create_animation(this.fallen.name);
           this.animation_turn_on(num);
         }
       }
@@ -183,6 +220,7 @@ export class HomeComponent {
   move_to_download() {
     this.router.navigate(['download']);
   }
+
 
 }
 

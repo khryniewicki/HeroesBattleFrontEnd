@@ -19,25 +19,29 @@
 
     <div class=" upper-nav ">
       <span class="lang form-inline px-3 ">
-      <div class="px-0" *ngIf="extended && extended.heroesMap; else serverOff">
-          <h3 class="text-white ">Server<span class="badge badge-pill serverOn mx-1 ">ON</span></h3>
+      <div class="px-0 default_cursor" *ngIf="extended && extended.heroesMap; else serverOff">
+          <h3 class="text-white ">{{'Server'| translate}}<span
+            class="badge badge-pill serverOn mx-1 ">{{'ServerOn'| translate}}</span></h3>
       </div>
        <ng-template #serverOff>
-         <h3 class="text-white">Server
-          <span class="badge badge-pill badge-danger mx-1 default_cursor">OFF</span></h3></ng-template>
+         <h3 class="text-white">{{'Server'| translate}}
+           <span
+             class="badge badge-pill badge-danger mx-1 default_cursor">{{'ServerOff'| translate}}</span></h3></ng-template>
           <div class="server">
         <ng-container *ngIf="extended && extended.heroesMap">
           <mat-icon matBadge="{{extended.heroesMap.size}}" class="text-white mx-3 default_cursor"
-                    matTooltip="Players online" matTooltipPosition='left'>accessibility</mat-icon>
+                    matTooltip="{{'TooltipPlayers' | translate}}" matTooltipPosition='left'>accessibility</mat-icon>
           <ng-container *ngIf="extended.heroesMap.size>0">
           <mat-icon matBadge="{{this.extended.timeLeft}}" matBadgeColor="warn" class="text-white mx-3 default_cursor"
-                    matTooltip="Time to clear room" matTooltipPosition='left'>restart_alt</mat-icon>
+                    matTooltip="{{'TooltipTime' | translate}}" matTooltipPosition='left'>restart_alt</mat-icon>
             </ng-container>
         </ng-container>
         </div>
-  <mat-slide-toggle class="  text-light" [(ngModel)]="isChecked"
+        <div class="text-light language">
+  <mat-slide-toggle [(ngModel)]="isChecked"
                     (change)="switchLang($event)">{{lang}}
   </mat-slide-toggle>
+          </div>
       </span>
     </div>
     <mat-toolbar class="shadowBox  background_black text-white ">

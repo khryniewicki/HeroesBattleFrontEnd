@@ -8,6 +8,15 @@
   "Account": "KONTO",
   "Download": "POBIERZ",
   "GameSettings": "USTAWIENIA",
+  "Server": "Serwer ",
+  "ServerOn": "WŁ.",
+  "ServerOff": "WYŁ.",
+  "TooltipPlayers": "Gracze online",
+  "TooltipTime": "Pozostały czas na restart pokoju ",
+
+  "Size": "Rozmiar: ",
+  "Loading": "Wczytywanie...",
+
   "redirecting": "PRZEKIEROWANIE NA SERWER AUTORYZACYJNY HEROES BATTLE, POCZEKAJ ...",
   "bubble_subtitles": "Gra online zaprojektowana dla dwóch graczy, którzy wybierają jednego z sześciu bohaterów i walczą do utraty życia. Teren walki pokryty jest wieloma przeszkodzami, które utrudniają ucieczkę ... ",
   "button_download": "POBIERZ",
@@ -15,6 +24,10 @@
   "button_hide_animation": "Schowaj animację",
   "Game_mage_title": "Czarodzieje",
   "Game_mage_description": "Utalentowani magowie, każdy z nich włada innym żywiołem. Magowie obdarzeni są dużą ilością many i szybko ją regenerują, mają jednak mało życia, dlatego muszą się wystrzegać wrogich czarów.",
+  "usesSpell": " używa: ",
+  "basicSpell": " podstawowego czaru ",
+  "ultimateSpell": "ostatecznego czaru ",
+
   "Game_fallen_title": "Upadli",
   "Game_fallen_description": "Grupa buntowników, którzy nie boją się magii. Upadli to wojownicy, którzy mają duże zasoby życia oraz many. Muszą się jednak spieszyć, aby pokonać przeciwnika, ponieważ gdy wyczerpią manę, odzyskają ją bardzo powoli.",
   "Ins_header_1": "1. Instrukcja instalacji OpenJDK 11 (niezbędne środowisko uruchomieniowe Javy)",

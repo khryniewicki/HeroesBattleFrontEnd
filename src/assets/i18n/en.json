@@ -8,7 +8,6 @@
   "Account": "ACCOUNT",
   "Download": "DOWNLOAD",
   "GameSettings": "GAME SETTINGS",
-
   "redirecting": "REDIRECTING TO HEROES BATTLE AUTH SERVER, PLEASE WAIT ...",
   "bubble_subtitles": "Online game designed for two players who select one of six heroes and fight to the loss of their lives. The combat area is covered with obstacles that make it difficult to escape ...",
   "button_download": "DOWNLOAD",
@@ -16,8 +15,22 @@
   "button_hide_animation": "Hide animation",
   "Game_mage_title": "Wizards",
   "Game_mage_description": "Gifted magicians, each of them wields a different element. The Wizards are endowed with a lot of mana and regenerate it quickly, but they have little health, so they have to beware of hostile spells.",
+  "usesSpell": " uses: ",
+  "basicSpell": "basic spell ",
+  "ultimateSpell": "ultimate spell ",
+
   "Game_fallen_title": "Fallens",
   "Game_fallen_description": "A group of rebels who are not afraid of magic. The Fallens are warriors who have a lot of life and mana. But they must hurry to defeat the enemy, because when they deplete their mana, they will regain it very slowly.",
+  "Server": "Server ",
+  "ServerOn": "ON",
+  "ServerOff": "OFF",
+  "TooltipPlayers": "Players online",
+  "TooltipTime": "Time left to restart room",
+
+  "Size": "Size: ",
+  "Loading": "Loading...",
+
+
   "Ins_header_1": "1.  OpenJDK 11 installation instructions (necessary Java runtime environment)",
   "Ins_description_1": "This step can be skipped if you already have OpenJDK 11+",
   "Ins_header_2": "2. Download the game",
@@ -59,7 +72,7 @@
   "Ins_text2_2": "Operating system Windows 10 ",
   "Ins_text2_2A": "Operating system Linux i.e. Ubuntu 18.04",
   "Ins_text2_3": "Installed OpenJDK 11",
-  "Ins_text2_4":"Memory: 2 GB RAM",
+  "Ins_text2_4": "Memory: 2 GB RAM",
   "Ins_text_download": "DOWNLOAD HEROES BATTLE",
   "Ins_linux_text1": "Extract the downloaded file to the required location.",
   "Ins_linux_text2": "Set",

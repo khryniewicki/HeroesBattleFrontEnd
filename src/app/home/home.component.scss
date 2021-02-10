@@ -57,9 +57,11 @@ vg-player {
   border: solid 2px #000 !important;
 
 }
-mat-grid-list{
+
+mat-grid-list {
   height: 1000px;
 }
+
 /* TILE ONE*/
 
 .title {
@@ -105,7 +107,10 @@ mat-grid-list{
 .position2 {
 
 }
-
+.img_spell{
+  object-fit: cover;
+  height: 30px;
+}
 .spacer2 {
   width: 15%;
 }
@@ -141,17 +146,25 @@ mat-grid-list{
   background: rgba(0, 0, 0, 0.5);
   box-shadow: 0 0 0 2px greenyellow inset;
   color: greenyellow;
-
-}
-.describtion{
-  width: 100%;
   position: absolute;
-  bottom: 20%;
+  bottom: 15%;
+  right: 10%;
+}
+
+.describtion2 {
+  position: absolute;
+  bottom: 15%;
+}
+.describtion3 {
+  position: absolute;
+  bottom: 5%;
 }
 .tile {
   z-index: 1;
 }
-
+.insideTile{
+  padding: 0  20px 0 60px!important;
+}
 .hide_tile1 {
   opacity: 0;
   transform: translateY(-400px);
@@ -162,3 +175,5 @@ mat-grid-list{
 .show_tile1 {
   transition-duration: 3s;
 }
+
+

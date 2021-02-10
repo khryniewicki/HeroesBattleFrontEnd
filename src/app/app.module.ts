@@ -39,6 +39,7 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {APP_BASE_HREF} from '@angular/common';
 import {MatBadgeModule} from '@angular/material/badge';
 import {MatTooltipModule} from '@angular/material/tooltip';
+import {NgxSpinnerModule} from 'ngx-spinner';
 
 export const materialComponents = [MatListModule, MatButtonModule, MatIconModule, MatSidenavModule, MatToolbarModule,
   MatSlideToggleModule, FormsModule, MatGridListModule, MatButtonToggleModule, MatCardModule, MatExpansionModule,
@@ -52,27 +53,28 @@ export const materialComponents = [MatListModule, MatButtonModule, MatIconModule
     routingComponents,
     GameComponent, AnimationComponent, DownloadComponent, SafePipe, RedirectComponent, GameSettingsPanelComponent
   ],
-  imports: [
-    BrowserModule,
-    ServiceWorkerModule.register('ngsw-worker.js', {enabled: environment.production}),
-    BrowserAnimationsModule,
-    materialComponents,
-    RouterModule,
-    AppRoutingModule,
-    HttpClientModule,
-    VgCoreModule,
-    VgControlsModule,
+    imports: [
+        BrowserModule,
+        ServiceWorkerModule.register('ngsw-worker.js', {enabled: environment.production}),
+        BrowserAnimationsModule,
+        materialComponents,
+        RouterModule,
+        AppRoutingModule,
+        HttpClientModule,
+        VgCoreModule,
+        VgControlsModule,
 
-    TranslateModule.forRoot({
-      loader: {
-        provide: TranslateLoader,
-        useFactory: httpTranslateLoader,
-        deps: [HttpClient]
-      }
-    }),
+        TranslateModule.forRoot({
+            loader: {
+                provide: TranslateLoader,
+                useFactory: httpTranslateLoader,
+                deps: [HttpClient]
+            }
+        }),
+        NgxSpinnerModule,
 
 
-  ],
+    ],
   providers: [
     [{provide: APP_BASE_HREF, useValue: '/'}],
     [{provide: HTTP_INTERCEPTORS, useClass: TimeoutInterceptor, multi: true}],

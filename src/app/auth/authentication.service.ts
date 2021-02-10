@@ -20,8 +20,8 @@ export class AuthenticationService {
   public authHost = 'https://heroes-battle-auth.khryniewicki.pl';
   // public resourceHost = 'http://localhost:8445';
   public resourceHost = 'https://heroes-battle-res.khryniewicki.pl';
-  public localHost = 'http://localhost:4200';
-  // public localHost = 'https://heroes-battle.khryniewicki.pl/';
+  // public localHost = 'http://localhost:4200';
+   public localHost = 'https://heroes-battle.khryniewicki.pl/';
 
   public authServerUrl = this.authHost + '/auth/realms/heroes_battle/protocol';
   private resourceServerUrl = this.resourceHost + '/resource-server';

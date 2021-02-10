@@ -44,8 +44,8 @@
       </ng-container>
 
       <ng-container *ngIf="i==1">
-        <div class="px-3 ">
-          <img class="img_hero img_mage " src="{{'/assets/img/'+mage+'.png'}}" alt="mage">
+        <div class="insideTile ">
+          <img class="img_hero img_mage " src="{{'/assets/img/'+mage.name+'.png'}}" alt="mage">
 
           <div class="title_group">
 
@@ -58,22 +58,29 @@
             </mat-button-toggle-group>
           </div>
 
-          <h4 class="sub-text position2"> {{'Game_mage_description' | translate}}</h4>
-          <div class="describtion row">
-            <div class="offset-1 col-8">
-              <h4 class="sub-text ">Fire Mage uses spells Fire and Fire Bomb</h4>
-            </div>
-            <div class=" col-3">
-              <button mat-raised-button class=" btn_animation "
-                      (click)="animate(i);"> {{(!mageAnimationActive ? 'button_show_animation' : 'button_hide_animation') | translate  }}</button>
-            </div>
+          <h4 class="sub-text "> {{'Game_mage_description' | translate}}</h4>
+          <div>
+              <table class="table table-sm table-borderless describtion3 sub-text">
+                <tr ><td colspan="2"> {{mage.prettyName + ('usesSpell' | translate)  }}</td></tr>
+                <tr>
+                  <td style="width: 3%"><img class="img_spell" src="{{'/assets/spells/'+mage.basicSpellImage+'.png'}}" alt="spell"></td>
+                  <td>{{('basicSpell' | translate) + '\'' + mage.basicSpell + '\''}}</td>
+                </tr>
+                <tr>
+                  <td><img class="img_spell" src="{{'/assets/spells/'+mage.ultimateSpellImage+'.png'}}" alt="spell"></td>
+                  <td> {{('ultimateSpell' | translate) + '\'' + mage.ultimateSpell + '\''}}</td>
+                </tr>
+              </table>
+            <button mat-raised-button class="describtion2 btn_animation"
+                    (click)="animate(i);"> {{(!mageAnimationActive ? 'button_show_animation' : 'button_hide_animation') | translate }}</button>
           </div>
+
         </div>
       </ng-container>
 
       <ng-container *ngIf="i==2">
-        <div class="px-3 ">
-          <img class="img_hero img_fallen" src="{{'/assets/img/'+fallen+'.png'}}" alt="fallen">
+        <div class="insideTile ">
+          <img class="img_hero img_fallen" src="{{'/assets/img/'+fallen.name+'.png'}}" alt="fallen">
 
           <div class="title_group">
             <p class="title2 d-inline"> {{'Game_fallen_title' | translate}} </p>
@@ -85,15 +92,22 @@
             </mat-button-toggle-group>
           </div>
 
-          <h4 class="sub-text position2"> {{'Game_fallen_description' | translate}}</h4>
-          <div class="describtion row">
-            <div class="offset-1 col-8">
-              <h4 class="sub-text ">Fire Mage uses spells Fire and Fire Bomb</h4>
-            </div>
-            <div class=" col-3">
-              <button mat-raised-button class=" btn_animation"
-                      (click)="animate(i);"> {{(!fallenAnimationActive ? 'button_show_animation' : 'button_hide_animation') | translate }}</button>
-            </div>
+          <h4 class="sub-text"> {{'Game_fallen_description' | translate}}</h4>
+
+          <div>
+            <table class="table table-sm table-borderless describtion3 sub-text">
+              <tr ><td colspan="2"> {{fallen.prettyName + ('usesSpell' | translate)  }}</td></tr>
+              <tr>
+                <td style="width: 3%"><img class="img_spell" src="{{'/assets/spells/'+fallen.basicSpellImage+'.png'}}" alt="spell"></td>
+                <td>{{('basicSpell' | translate) + '\'' + fallen.basicSpell + '\''}}</td>
+              </tr>
+              <tr>
+                <td><img class="img_spell" src="{{'/assets/spells/'+fallen.ultimateSpellImage+'.png'}}" alt="spell"></td>
+                <td> {{('ultimateSpell' | translate) + '\'' + fallen.ultimateSpell + '\''}}</td>
+              </tr>
+            </table>
+            <button mat-raised-button class="describtion2  btn_animation"
+                    (click)="animate(i);"> {{(!fallenAnimationActive ? 'button_show_animation' : 'button_hide_animation') | translate }}</button>
           </div>
         </div>
       </ng-container>
@@ -103,3 +117,4 @@
     <div id="parent" #parent></div>
   </div>
 </div>
+
