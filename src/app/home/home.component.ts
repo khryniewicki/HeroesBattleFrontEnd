@@ -60,7 +60,7 @@ export class HomeComponent {
   heroes: Hero[] = [
     {
       name: 'fire_wizard', prettyName: 'Fire Mage', basicSpell: 'Fire', basicSpellImage: 'fire',
-      ultimateSpell: 'FireBomb', ultimateSpellImage: 'firebomb'
+      ultimateSpell: 'Fire Bomb', ultimateSpellImage: 'firebomb'
     },
     {
       name: 'ice_wizard', prettyName: 'Ice Mage', basicSpell: 'Ice Bolt', basicSpellImage: 'icebolt',
