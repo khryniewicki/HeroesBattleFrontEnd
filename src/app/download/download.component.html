@@ -1,67 +1,18 @@
-<div class="container-fluid">
+<div class="container-fluid ">
+
   <mat-tab-group animationDuration="0ms" mat-align-tabs="center">
     <mat-tab label="Windows">
 
       <mat-card class="card_full">
-
+        <br>
+        <h3>{{'Ins_text_1'| translate}}{{'Ins_text_2'| translate}}</h3>
+        <br>
         <mat-card-content class="content ">
           <mat-accordion>
-            <mat-expansion-panel hideToggle class="expansion ">
-              <mat-expansion-panel-header>
-                <mat-panel-title>
-                  <h3><b>{{'Ins_header_1' | translate}}</b></h3>
-                </mat-panel-title>
-                <mat-panel-description>
-                  <h3> {{'Ins_description_1' |translate}}</h3>
-                </mat-panel-description>
-              </mat-expansion-panel-header>
-              {{'Ins_text_1'| translate}}
-              <br> <br>
-
-              <b> {{'Ins_title_1'| translate}} </b><br> <br>
-
-              {{'Ins_link'| translate}}  <a href="https://jdk.java.net/java-se-ri/11">{{'Ins_link2'| translate}} </a>
-              <br> <br>
-
-              {{'Ins_text_2' | translate}}
-              <br> <br> <br>
-              <b> {{'Ins_title_2'| translate}}  </b>
-              <br><br>
-              {{'Ins_text_3' | translate}}<b>{{'Ins_text_4' | translate}}</b>
-              <br><br>
-              {{'Ins_text_5' | translate}}
-              <br><br>
-              <img class="img_jdk" src="{{'Ins_img_1' | translate }}" alt="environment_window"><br>
-
-              {{'Ins_text_6' | translate}} <b> {{'Ins_text_6A' | translate}} </b> {{'Ins_text_6B' | translate}}
-              <b> {{'Ins_text_7' | translate}} </b>
-              <br><br>
-              <img class="img_jdk" src="{{'Ins_img_2' | translate }}" alt="environment_window2"><br>
-              <br><br>
-              {{'Ins_text_8' | translate}}  <b> {{'Ins_text_9' | translate}}  </b> {{'Ins_text_10' | translate}}
-              <b> {{'Ins_text_11' | translate}}  </b> {{'Ins_text_12' | translate}}
-              <br><br>
-              <img class="img_jdk" src="{{'Ins_img_3' | translate }}" alt="environment_window3"><br>
-              <br><br>
-              {{'Ins_text_13' | translate}}  <b>{{'Ins_text_14' | translate}} </b> {{'Ins_text_15' | translate}}
-              <b>{{'Ins_text_16' | translate}} </b> <br><br>
-              <img class="img_jdk" src="{{'Ins_img_4' | translate }}" alt="environment_window4"><br>
-              <br><br>
-              {{'Ins_text_17' | translate}}  <b> {{'Ins_text_18' | translate}}</b> {{'Ins_text_19' | translate}}
-              <b> {{'Ins_text_20' | translate}} </b><br><br>
-              <img class="img_jdk" src="{{'Ins_img_5' | translate }}" alt="environment_window5"><br>
-              <br><br>
-              {{'Ins_text_21' | translate}}  <b> OK </b>. <br><br>
-              <b class="text-danger">  {{'Ins_text_22' | translate}}</b><br><br>
-              <a
-                href="https://www.ibm.com/support/knowledgecenter/SS3JSW_5.2.0/com.ibm.help.gdha_installing.doc/com.ibm.help.gdha_installing.doc/gdha_setting_java_variable_win.html">
-                {{'Ins_text_23' | translate}}</a>
-
-            </mat-expansion-panel>
             <mat-expansion-panel hideToggle>
               <mat-expansion-panel-header>
                 <mat-panel-title>
-                  <h3><b> {{'Ins_header_2' | translate}}</b></h3>
+                  <h3><b> {{'Ins_header_2_bundled_jre' |translate}}</b></h3>
                 </mat-panel-title>
               </mat-expansion-panel-header>
               <ul><b>{{'Ins_text2_1' | translate}}</b>
@@ -71,9 +22,10 @@
                 <li> {{'Ins_text2_4' | translate}}</li>
               </ul>
               <div class="row">
-                <button mat-raised-button class="mx-3" color="primary" (click)="downloadResource('heroes_battle_windows.zip')" >{{'Ins_text_download' | translate}}
+                <button mat-raised-button class="mat-primary m-3 btn-sm "
+                        (click)="downloadResource('heroes_battle_windows.zip')">{{'Ins_text_download' | translate}}
                 </button>
-                <p class="mx-3 text-danger my-3">{{'Size' | translate}} 286.99 MB</p>
+                <h3 class="mx-3 text-danger my-3">{{'Size' | translate}} 280 MB</h3>
               </div>
               <mat-progress-bar class="my-4" *ngIf="download$ | async as download"
                                 [mode]="download.state == 'PENDING' ? 'buffer' : 'determinate'"
@@ -89,27 +41,28 @@
     <mat-tab label="Linux">
 
       <mat-card class="card_full">
-
+        <br>
+        <h3>{{'Ins_text_1'| translate}}</h3>
+        <br>
         <mat-card-content class="content ">
           <mat-accordion>
             <mat-expansion-panel hideToggle class="expansion ">
               <mat-expansion-panel-header>
                 <mat-panel-title>
-                  <h3><b>{{'Ins_header_1' | translate}}</b></h3>
+                  <h3 class="longtext"><b>{{'Ins_header_1' | translate}}</b></h3>
                 </mat-panel-title>
                 <mat-panel-description>
-                  <h3> {{'Ins_description_1' |translate}}</h3>
+                  <h3 class="longtext"> {{'Ins_description_1' |translate}}</h3>
                 </mat-panel-description>
               </mat-expansion-panel-header>
-              {{'Ins_text_1'| translate}}
-              <br> <br>
 
-              <b> {{'Ins_title_1'| translate}} </b><br> <br>
+
+              <b> {{'Ins_title_1'| translate}}  </b><br> <br>
 
               {{'Ins_link'| translate}}  <a href="https://jdk.java.net/java-se-ri/11">{{'Ins_link2'| translate}} </a>
               <br> <br>
 
-              <p>{{'Ins_linux_text1' | translate}} <br><br>
+              <h3>{{'Ins_linux_text1' | translate}} <br><br>
 
                 {{'Ins_linux_text2' | translate}}
                 <b>{{'Ins_linux_text3' | translate}}</b> {{'Ins_linux_text4' | translate}}<br>
@@ -120,11 +73,11 @@
                 {{'Ins_linux_text9' | translate}} <br>
                 {{'Ins_linux_text10' | translate}}<br>
                 {{'Ins_linux_text11' | translate}}<br><br>
-                {{'Ins_linux_text12' | translate}}</p>
-              <p class="text-danger"><b> {{"Ins_text_22" | translate}}</b></p><br>
-              <a
+                {{'Ins_linux_text12' | translate}}</h3>
+              <h3 class="text-danger"><b> {{"Ins_text_22" | translate}}</b></h3><br>
+              <h3><a
                 href="https://www.ibm.com/support/knowledgecenter/SS3JSW_5.2.0/com.ibm.help.gdha_installing.doc/com.ibm.help.gdha_installing.doc/gdha_setting_java_variable_linux.html">
-                {{'Ins_text_23' | translate}}</a>
+                {{'Ins_text_23' | translate}}</a></h3>
 
 
             </mat-expansion-panel>
@@ -140,10 +93,18 @@
                 <li> {{'Ins_text2_3' | translate}}</li>
                 <li> {{'Ins_text2_4' | translate}}</li>
               </ul>
-              <button mat-raised-button class="mat-primary m-5 " (click)="downloadResource('heroes_battle_linux.zip')">
-                {{'Ins_text_download' | translate}}
-              </button>
+              <div class="row">
 
+                <button mat-raised-button class="mat-primary m-3 btn-sm "
+                        (click)="downloadResource('heroes_battle_linux.zip')">
+                  {{'Ins_text_download' | translate}}
+                </button>
+                <h3 class="mx-3 text-danger my-3">{{'Size' | translate}} 64.6 MB</h3>
+              </div>
+              <mat-progress-bar class="my-4" *ngIf="download$ | async as download"
+                                [mode]="download.state == 'PENDING' ? 'buffer' : 'determinate'"
+                                [value]="download.progress">
+              </mat-progress-bar>
             </mat-expansion-panel>
           </mat-accordion>
 

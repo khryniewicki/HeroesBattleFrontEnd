@@ -40,6 +40,7 @@ import {APP_BASE_HREF} from '@angular/common';
 import {MatBadgeModule} from '@angular/material/badge';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {NgxSpinnerModule} from 'ngx-spinner';
+import { DetailsComponent } from './details/details.component';
 
 export const materialComponents = [MatListModule, MatButtonModule, MatIconModule, MatSidenavModule, MatToolbarModule,
   MatSlideToggleModule, FormsModule, MatGridListModule, MatButtonToggleModule, MatCardModule, MatExpansionModule,
@@ -51,7 +52,7 @@ export const materialComponents = [MatListModule, MatButtonModule, MatIconModule
     AppComponent,
     NavbarComponent,
     routingComponents,
-    GameComponent, AnimationComponent, DownloadComponent, SafePipe, RedirectComponent, GameSettingsPanelComponent
+    GameComponent, AnimationComponent, DownloadComponent, SafePipe, RedirectComponent, GameSettingsPanelComponent, DetailsComponent
   ],
     imports: [
         BrowserModule,
@@ -72,8 +73,6 @@ export const materialComponents = [MatListModule, MatButtonModule, MatIconModule
             }
         }),
         NgxSpinnerModule,
-
-
     ],
   providers: [
     [{provide: APP_BASE_HREF, useValue: '/'}],

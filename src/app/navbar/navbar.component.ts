@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, ElementRef, HostListener, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {BreakpointObserver} from '@angular/cdk/layout';
 import {TranslateService} from '@ngx-translate/core';
 import {MatSlideToggleChange} from '@angular/material/slide-toggle';
@@ -6,6 +6,7 @@ import {AuthenticationService, ExtendedMessage, Msg} from '../auth/authenticatio
 import {Router} from '@angular/router';
 import {Cookie} from 'ng2-cookies';
 import {DownloadService} from '../services/download/download.service';
+import {MatDrawer} from '@angular/material/sidenav';
 
 @Component({
   selector: 'app-navbar',
@@ -19,13 +20,15 @@ export class NavbarComponent implements OnInit, OnDestroy {
   public isAdmin = false;
   extended: ExtendedMessage;
   interval;
-  serverGauge;
+  isBroad;
+  @ViewChild('drawer') public drawer: MatDrawer;
 
   // tslint:disable-next-line:max-line-length
-  constructor(private breakpointObserver: BreakpointObserver, public translate: TranslateService,
+  constructor(private breakpointObserver: BreakpointObserver, public translate: TranslateService, private eRef: ElementRef,
               private authService: AuthenticationService, private router: Router, private downloadService: DownloadService) {
     translate.addLangs(['en', 'pl']);
     translate.setDefaultLang('pl');
+    this.isBroad = window.innerWidth >= 500;
     this.lang = 'PL';
     this.isChecked = true;
     if (Cookie.check('language')) {
@@ -33,6 +36,12 @@ export class NavbarComponent implements OnInit, OnDestroy {
       this.isChecked = language === 'PL';
       this.setLanguage(this.isChecked);
     }
+  }
+
+  @HostListener('window:resize', ['$event'])
+  // tslint:disable-next-line:typedef
+  onResize(event) {
+    this.isBroad = event.target.innerWidth >= 500;
   }
 
 // tslint:disable-next-line:typedef
@@ -84,7 +93,6 @@ export class NavbarComponent implements OnInit, OnDestroy {
     );
   }
 
-
 // tslint:disable-next-line:typedef
   getExtended() {
     this.interval = setInterval(() =>
@@ -126,5 +134,16 @@ export class NavbarComponent implements OnInit, OnDestroy {
     this.router.navigate(['download']);
   }
 
+  // tslint:disable-next-line:typedef
+  details() {
+    this.router.navigate(['game-details']);
+  }
 
+  @HostListener('document:click', ['$event'])
+  // tslint:disable-next-line:typedef
+  clickout(event) {
+    if (!this.eRef.nativeElement.contains(event.target) && this.drawer.opened) {
+      this.drawer.toggle();
+    }
+  }
 }

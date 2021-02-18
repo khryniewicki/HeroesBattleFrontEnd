@@ -1,37 +1,84 @@
 .sidenav-container {
   height: auto;
+  flex: 1 1 auto
 }
 
 .sidenav {
   width: 200px;
+  height: auto;
+  font-size: 12px!important;
+  background: #191919;
+  min-height: 100vh!important;
 }
+.mat-drawer{
+  min-height: 100vh!important;
 
+}
 .sidenav .mat-toolbar {
   background: inherit;
+  color: white;
+  font-size: inherit;
 }
-
+.sidenav .mat-list-item{
+  color: white;
+  font-size: inherit;
+}
 .mat-toolbar.mat-primary {
   position: sticky;
   top: 0;
   z-index: 1;
 }
-.logo{
-  max-width:100%;
-  max-height:100%;
+
+.logo {
+  max-width: 100%;
+  max-height: 100%;
 }
-.serverOn{
+
+.serverOn {
   background: forestgreen;
   color: white;
   cursor: default;
   padding-right: -20px;
 }
-.server{
+
+.server {
   padding-top: 0;
   margin-top: 0;
   margin-bottom: 0;
   padding-bottom: -60px;
   padding-right: 20px;
 }
-.language{
-  padding-bottom: 15px!important;
+
+.language {
+  padding-bottom: 15px !important;
+}
+
+@media screen and (max-width: 500px) {
+  h3{
+    font-size: 1.5vh;
+  }
+  .size{
+    font-size: 2.5vh;
+  }
+  ::ng-deep .mat-slide-toggle-bar {
+    height: 7px!important;
+    width: 15px!important;
+  }
+  ::ng-deep .mat-slide-toggle-content{
+    font-size: 1.5vh;
+  }
+  ::ng-deep .mat-slide-toggle-thumb {
+    height: 10px!important;
+    width: 10px!important;
+  }
+
+  ::ng-deep .mat-slide-toggle.mat-checked .mat-slide-toggle-thumb-container {
+    transform: translate3d(10px,0,0) !important;
+  }
+
+  ::ng-deep .mat-slide-toggle-thumb-container {
+    width: 12px;
+    height: 12px;
+    top: -2px;
+  }
 }

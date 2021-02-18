@@ -1,134 +1,137 @@
-#firstPage{
-  height: calc(100% - 91px);
+#firstPage {
+  min-height: calc(100% - 90px);
+  height: fit-content;
   width: 100%;
-  overflow: hidden;
+  overflow: visible;
 }
 
-#secondPage{
-  border: solid 4px #000 !important;
-  height: 100%;
-  width: 100%;
-  overflow: hidden;
-  color: white!important;
+.justify {
+  text-align: justify;
+  line-height: 1.6;
 }
-.left{
-  left: 0;
-}
-
-.centered {
-  position: absolute;
-  top: 50%;
-  left: 60%;
-  transform: translate(-40%, -50%);
-}
-.split {
-  height: 100%;
-  width: 50%;
-  z-index: 1;
-  top: 0;
-  overflow-x: hidden;
-  padding-top: 20px;
-}
-
-.view{
-  height: 800px;
-  width: 1200px;
-  background: transparent;
-  overflow: hidden;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+.h1{
+  font-size: 1.2vw;
 
 }
-
-
-.right{
-  top:50%;
-  right: 0;
-
-}
-
-a{
-  color: #9c937e
+a {
+  color: #ada194
 }
 
 a:focus, a:hover {
   border-bottom: 1px solid;
 }
-.lwjgl {
-  width: 267px;
-  height: 106px;
-  top: 16%;
 
-  left: 18%;
-  position: absolute;
+.lwjgl {
+  width: 80%;
+  object-fit: cover;
+  padding-top: 10%;
 }
 
 .java {
-  width: 174px;
-  height: 179px;
-  top: 12%;
-  left: 6%;
-  position: absolute;
-}
-.angular {
-  width: 150px;
-  height: 150px;
-  top: 60%;
-  left: 6%;
-  position: absolute;
-}
-.spring {
-  width: 166px;
-  height: 120px;
-  top: 35%;
-  left: 13%;
-  position: absolute;
-}
-.gcp {
-  width: 308px;
-  height: 176px;
-  top: 60%;
-  left: 16%;
-  position: absolute;
-}
-.content{
-  padding-top: 100px;
-  opacity: 1!important;
-}
-.cogs {
-  background-image: url('../../assets/gif/cogs.gif');
-  object-fit: cover;
-  opacity: 0.5;
-}
-.thunder {
-  position: absolute;
-  z-index: 0.5;
-  opacity: 0.05;
+  width: 80%;
   object-fit: cover;
 }
-.accordion_panel{
 
-  background: rgba(0, 0, 0, 0.5);
-  color: white;
+.angular {
+  width: 50%;
+  object-fit: cover;
 }
-.note {
-  position: absolute;
-  bottom: 5%;
+
+.spring {
+  width:70%;
+  object-fit: cover;
 }
-.learnMoreButton{
+
+.gcp {
+  width: 90%;
+  object-fit: cover;
+}
+
+.keycloak {
+  width: 95%;
+  object-fit: cover;
+}
+
+.td0 {
+  width: 5% !important;
+}
+
+.td1 {
+  width: 15% !important;
+}
+
+.td2 {
+  display: none;
+}
+
+.td3 {
+  width: 3% !important;
+}
+
+.td4 {
+  width: 57% !important;
+}
+
+.learnMoreButton {
   position: relative;
-  left: 30%;
-  width: 200px;
-  height: 52px;
-  font-size: 18px;
+  left: 40%;
+  line-height: 3;
+  font-size: 1.2vw;
 }
-.title {
-  position: absolute;
-  top: 10%;
-  left: 50%;
-  transform: translateX(-50%);
-  color: #9c937e;
-  font-size: 35px;
+
+@media screen and (max-width: 900px) {
+  .justify {
+    text-align: justify;
+    font-size: 2vw;
+    line-height: 1.6;
+  }
+
+  .td2 {
+    display: block;
+    justify-content: center;
+    text-align: center;
+  }
+  .td1 {
+    display: none;
+  }
+  .below{
+    padding-top: 10%;
+  }
+  .lwjgl {
+    width: 60%;
+    object-fit: cover;
+    padding-top: 5%;
+  }
+
+  .java {
+    width: 60%;
+    object-fit: cover;
+  }
+
+  .angular {
+    width: 40%;
+    object-fit: cover;
+  }
+
+  .spring {
+    width: 60%;
+    object-fit: cover;
+  }
+
+  .gcp {
+    width: 70%;
+    object-fit: cover;
+  }
+
+  .keycloak {
+    width: 75%;
+    object-fit: cover;
+  }
+  .learnMoreButton {
+    position: relative;
+    left: 40%;
+    line-height: 3;
+    font-size: 2.0vw;
+  }
 }
 

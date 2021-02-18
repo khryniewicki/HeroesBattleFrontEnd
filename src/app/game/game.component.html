@@ -1,132 +1,58 @@
 <div class="container-fluid py-1  px-0 m-0  " id="firstPage" [style.background-image]="bubbles9">
-
-  <div class="split left ">
-    <img class="lwjgl" src="{{'/assets/img/lwjgl.png'}}" alt="lwjgl">
-    <img class="java" src="{{'/assets/img/java.png'}}" alt="java">
-    <img class="spring" src="{{'/assets/img/spring.png'}}" alt="spring">
-    <img class="angular" src="{{'/assets/img/angular.png'}}" alt="angular">
-    <img class="gcp" src="{{'/assets/img/gcp.png'}}" alt="gcp">
-  </div>
-
-  <div class="split right ">
-    <div class="centered">
-      <h1 class="sub-text ">Gra <b>Heroes Battle</b> została napisana głównie w języku <b>Java</b> wraz z
-        wykorzystaniem technologii <b>WebSocket</b> oraz
-        biblioteki <a href="https://www.lwjgl.org/"><b>LightWeight Java Game Library (LWJGL)</b></a>. Aplikacja
-        kliencka gry wymagała przede wszystkim własnego silnika renderującego tekstury, opracowania mechaniki
-        poruszania się po planszy postaci oraz czarów, wymiany komunikatów z serwerem, a także obsługi
-        współbieżności wątków.
-        <br><br>Aplikacja serwerowa została napisana z wykorzystaniem frameworku <b>Spring</b> oraz technologii <b>WebSocket</b>.
-        Aplikacja przechowuje informacje o użytkownikach, umożliwia przesyłanie komunikatów oraz udostępnia API, umożliwiając kontrolę nad
-        opcjami gry.
-        <br><br>Aplikacja webowa została przygotowana przy pomocy frameworku <b>Angular</b>.
-        <br><br> Aplikacja serwerowa oraz webowa zostały umieszczone na serwerze <b>Google Cloud Platform</b>.
-      </h1>
-      <br>
-      <button mat-raised-button color="warn" class="learnMoreButton" (click)="scroll('secondPage')"> Dowiedz się
-        więcej
-      </button>
-    </div>
-  </div>
-</div>
-<div class="container-fluid" id="secondPage" [style.background-image]="bubbles10">
-  <div class="light-theme">
-    <mat-tab-group animationDuration="0ms">
-      <mat-tab label="Współbieżność">
-
-        <mat-card class="view">
-
-          <mat-card-content class="content">
-
-            <h1 class="sub-text"> W ostatecznej wersji aplikacji klienckiej można wyodrębnić dwa wątki. Pierwszy z
-              nich
-              odpowiada za wyświetlanie treści, interakcję z menu, przebieg samej gry aż po jej zakończenie.
-              Drugi wątek jest uruchamiany w trakcie rejestracji gracza i odpowiada za wymianę wiadomości z inną
-              aplikacją
-              poprzez serwer.
-              <br>
-              <br>
-              Wyzwaniem było stworzenie aplikacji w taki sposób, aby aktywne wątki wzajemnie się nie blokowały i nie
-              powodowały wyrzucenie wyjątków lub chwilowe zamrożenie gry.
-              Najlepszym rozwiązaniem tego problemu okazało się zastosowaniem wzorca projetkowego Aktywny Obiekt*.
-            </h1>
-            <h5 class="note"><br>* O wzorcu projektowym można więcej przeczytać w ksiażce Roberta C. Martin'a, Zwinne
-              Wytwarzanie
-              oprogramowania. Najlepsze zasady, wzorce i praktyki, 2003.</h5>
-          </mat-card-content>
-        </mat-card>
-
-      </mat-tab>
-      <mat-tab label=" Mechanika menu">
-        <mat-card class="view">
-
-          <mat-card-content class="content">
-            <h1 class="sub-text p-5">
-              Karty menu zostały zaprojktowane jako obiekty, które zawierają obrazy stałe, obrazy tymczasowe oraz
-              przyciski.
-              Obrazy stałe to tło menu, obrazy tymczasowe informują gracza o jego wyborze, natomiast przyciski to
-              interaktywne elementy menu.
-              <br>
-              <br>
-              Dzięki temu, że przyciski wykorzystują wzorzec projektowy
-
-              Obserwator, reagują na zdarzenia, co umożliwia uruchomienie lub wyłączenie gry, przechodzenie między
-              kartami,
-              wybieranie postaci lub nadanie imienia graczowi.
-              Animacja postaci rzucającej czar to zapętlony wycinek gry z losowo wybranym czarem.
-            </h1>
-          </mat-card-content>
-        </mat-card>
-
-      </mat-tab>
-      <mat-tab label="Mechanika gry">
-        <mat-card class="view">
-
-          <mat-card-content class="content">
-            <h1 class="sub-text p-5">
-              Plansza gry jest to jeden obraz, na którym zdefiniowano szereg mniejszych obiektów w miejscu przeszkód lub
-              zmiany terenu. Obiekty te nie są wyświetlane,
-              jednak stanowią integralną część mapy i powodują, że napotkane elementy stanowią dla bohatera przeszkodę a
-              gra
-              jest przez to bardziej realistyczna.
-              <br>
-              <br>
-              Bohaterowie oraz czary są to obiekty, które są sterowane przez gracza przy wykorzystaniu biblioteki LWJGL.
-              Odpowiednie algorytmy kontrolują
-              m.in. życie bohatera oraz jego utratę, w przypadku gdy wrogi czar natrafi na bohatera, manę oraz jej
-              regenerację oraz ruch,
-              aby postać nie zderzyła się z przeszkodami.
-            </h1>
-          </mat-card-content>
-        </mat-card>
-      </mat-tab>
-      <mat-tab label="Komunikacja między klientami">
-        <mat-card class="view">
-
-          <mat-card-content class="content">
-            <h1 class="sub-text p-5">
-              Wymiana komunikatów stanowi ważny element rozgrywki, ponieważ dzięki niej zachodzi interakcja między
-              graczami,
-              a bohaterowie i czary są w ruchu.
-              W trakcie gry przesyłane i odbierane są setki wiadomości przy użyciu technologii WebSocket.
-              <h3>[Dowiedz się więcej o technologii]</h3>
-
-              <br>
-              Aby zachować płynność gry, utrzymując przy tym wysoką wydajność, wiadomości muszą zostać odpowiednio
-              przetworzone przed wysłaniem i odebraniem.
-              Wysłane wiadomości są ograniczone do minimum, przesyłane są tylko wtedy, kiedy zmienia się pozycja, życie
-              lub
-              mana bohatera.
-              Podczas wymiany komunikaty nie są odbierane w kolejności, w której zostały wysłane, dlatego odebrane
-              wiadomości muszą zostać wcześniej odpowiednio
-              przefiltrowane, aby uniknąć efektu 'cofnięcia się' bohatera do poprzedniej pozycji.
-
-            </h1>
-          </mat-card-content>
-        </mat-card>
-      </mat-tab>
-
-    </mat-tab-group>
+  <div>
+    <table class="table table-borderless">
+      <br> <br>
+      <tr>
+        <td class="td0"></td>
+        <td  class="td1"><img class="lwjgl" src="{{'/assets/img/lwjgl.png'}}" alt="lwjgl"></td>
+        <td  class="td1"><img class="java " src="{{'/assets/img/java.png'}}" alt="java"></td>
+        <td class="td2">
+          <img class="lwjgl" src="{{'/assets/img/lwjgl.png'}}" alt="lwjgl">
+          <img class="java below" src="{{'/assets/img/java.png'}}" alt="java"></td>
+        <td class="td3"></td>
+        <td class="td4">
+          <h1 class="sub-text justify">{{'Game1' | translate}} <b>Heroes Battle</b>{{'Game2' | translate}} <b>Java</b> {{'Game3' | translate}} <b>WebSocket</b>
+            {{'Game4' | translate}} <a href="https://www.lwjgl.org/"><b>LightWeight Java Game Library (LWJGL)</b></a>{{'Game5' | translate}}</h1>
+        </td>
+        <td class="td0">
+        </td>
+      </tr>
+      <br><br>
+      <tr>
+        <td class="td0"></td>
+        <td class="td1"><img class="spring" src="{{'/assets/img/spring.png'}}" alt="spring"></td>
+        <td class="td1"><img class="keycloak" src="{{'/assets/img/keycloak.png'}}" alt="keycloak"></td>
+        <td  class="td2 ">
+          <img class="spring" src="{{'/assets/img/spring.png'}}" alt="spring">
+          <img class="keycloak below"  src="{{'/assets/img/keycloak.png'}}" alt="keycloak"></td>
+        <td class="td3"></td>
+        <td class="td4">
+          <h1 class="sub-text justify">{{'Game6' | translate}}
+            <b>Spring</b>{{'Game7' | translate}}
+            <b>WebSocket</b>{{'Game8' | translate}} <a href="https://www.keycloak.org/"><b>Key Cloak</b></a>.</h1>
+        </td>
+        <td class="td0"></td>
+      </tr>
+      <br><br>
+      <tr>
+        <td class="td0"></td>
+        <td class="td1"><img class="angular" src="{{'/assets/img/angular.png'}}" alt="angular"></td>
+        <td class="td1"><img class="gcp" src="{{'/assets/img/gcp.png'}}" alt="gcp"></td>
+        <td class="td2">
+          <img class="angular" src="{{'/assets/img/angular.png'}}" alt="angular">
+          <img class="gcp below" src="{{'/assets/img/gcp.png'}}" alt="gcp"></td>
+        <td class="td3"></td>
+        <td class="td4">
+          <h1 class="sub-text justify"> {{'Game9' | translate}} <b>Angular</b>.
+            <br> {{'Game10' | translate}} <b>Google Cloud Platform</b>.
+          </h1>
+          <br>
+          <button mat-raised-button color="warn" class="learnMoreButton" routerLink="/game-details">
+            Dowiedz się więcej
+          </button>
+        </td>
+        <td class="td0"></td>
+      </tr>
+    </table>
   </div>
 </div>
-

@@ -69,6 +69,7 @@ mat-sidenav-container {
 .sidenav {
   width: 200px;
   box-shadow: 3px 0 6px rgba(0, 0, 0, .24);
+  min-height: 100%;
 }
 
 mat-toolbar a {
@@ -128,7 +129,7 @@ mat-toolbar {
     font-size: 1px;
   }
   #logo {
-    width: 120px!important;
+    width: 100px!important;
     height: 100%!important;
   }
 

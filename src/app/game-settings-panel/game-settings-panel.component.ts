@@ -6,6 +6,10 @@ export interface TimeHolder {
   time: number;
 }
 
+export interface VersionHolder {
+  name: string;
+}
+
 @Component({
   selector: 'app-game-settings-panel',
   templateUrl: './game-settings-panel.component.html',
@@ -19,14 +23,16 @@ export class GameSettingsPanelComponent implements OnInit {
   private testUrl = '/api/option/test';
   private setLogoutTimeUrl = '/api/option/set-logout-time-in-seconds';
   private setLogoutTimeInGameUrl = '/api/option/set-logout-time-without-player-in-seconds';
-
+  private setVersionUrl = '/api/option/set-version';
   setTimeLogOutForm: FormGroup = new FormGroup({
     time: new FormControl('')
   });
   setTimeLogOutInGameForm: FormGroup = new FormGroup({
     time: new FormControl('')
   });
-
+  setVersionForm: FormGroup = new FormGroup({
+    name: new FormControl('')
+  });
 
   constructor(private auth: AuthenticationService) {
   }
@@ -74,10 +80,17 @@ export class GameSettingsPanelComponent implements OnInit {
   // tslint:disable-next-line:typedef
   setLogoutTimeInGame(timeHolder: TimeHolder) {
     const time = timeHolder.time;
-
     console.log(time);
-
     this.auth.getMsg(this.setLogoutTimeInGameUrl + '?time=' + time).subscribe(
+      p => console.log(p),
+      error => console.log(error));
+  }
+
+  // tslint:disable-next-line:typedef
+  setVersion(versionHolder: VersionHolder) {
+    const version = versionHolder.name;
+    console.log(version);
+    this.auth.getMsg(this.setVersionUrl + '?version=' + version).subscribe(
       p => console.log(p),
       error => console.log(error));
   }

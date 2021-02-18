@@ -1,9 +1,11 @@
 import {
+  AfterViewChecked,
   ChangeDetectionStrategy,
   Component,
   ComponentFactoryResolver,
   ComponentRef,
   ElementRef,
+  HostListener,
   ViewChild,
   ViewContainerRef
 } from '@angular/core';
@@ -11,6 +13,8 @@ import {AnimationComponent} from './tiles/animation/animation.component';
 import {NavbarComponent} from '../navbar/navbar.component';
 import {Router} from '@angular/router';
 import {SubjectService} from '../services/subject/subject.service';
+import {APP_CONSTANTS} from '../web/APP_CONSTANTS';
+import {NgxSpinnerService} from 'ngx-spinner';
 
 
 export interface Tile {
@@ -40,7 +44,20 @@ export interface Hero {
 
 })
 
-export class HomeComponent {
+export class HomeComponent implements  AfterViewChecked{
+  // tslint:disable-next-line:max-line-length
+  constructor(private el: ElementRef, private componentFactoryResolver: ComponentFactoryResolver, private subject: SubjectService, private spinner: NgxSpinnerService,
+              private router: Router) {
+    this.mage = this.getHero('fire_wizard');
+    this.fallen = this.getHero('fallen_king');
+    this.innerWidth = window.innerWidth;
+    this.innerHeight = window.innerHeight;
+    this.setRatio();
+    this.spinner.show(this.getSpinner());
+
+  }
+
+  loaded = false;
   bubbles = 'assets/bg/bubbles1.png';
   bubbles2 = 'assets/bg/bubbles2.png';
   bubbles3 = 'assets/bg/bubbles3.png';
@@ -50,12 +67,23 @@ export class HomeComponent {
   fallen: Hero;
   mageAnimationActive: boolean;
   fallenAnimationActive: boolean;
+  innerWidth;
+  innerHeight;
+  tiles;
+  isLargeScreen: boolean;
+  ratio;
   @ViewChild('parent', {read: ViewContainerRef}) target: ViewContainerRef;
 
-  tiles: Tile[] = [
-    {cols: 4, rows: 3, color: 'black', bg: ' url(' + this.bubbles + ')', class: ''},
-    {cols: 2, rows: 2, color: 'black', bg: ' url(' + this.bubbles2 + ')', class: 'tile'},
+  bigTiles: Tile[] = [
+    {cols: 4, rows: 3, color: 'black', bg: ' url(' + this.bubbles + ')', class: 'tile0'},
+    {cols: 2, rows: 2, color: 'black', bg: ' url(' + this.bubbles2 + ')', class: 'tile tile0'},
     {cols: 2, rows: 2, color: 'black', bg: ' url(' + this.bubbles3 + ')', class: 'tile'},
+  ];
+  smallTiles: Tile[] = [
+    {cols: 4, rows: 1, color: 'black', bg: ' url(' + this.bubbles + ')', class: 'tile0'},
+    {cols: 4, rows: 1, color: 'black', bg: ' url(' + this.bubbles + ')', class: 'tile0'},
+    {cols: 4, rows: 1, color: 'black', bg: ' url(' + this.bubbles2 + ')', class: 'tile tile0'},
+    {cols: 4, rows: 1, color: 'black', bg: ' url(' + this.bubbles3 + ')', class: 'tile'},
   ];
   heroes: Hero[] = [
     {
@@ -84,11 +112,24 @@ export class HomeComponent {
     }
   ];
 
-  // tslint:disable-next-line:max-line-length
-  constructor(private el: ElementRef, private componentFactoryResolver: ComponentFactoryResolver, private subject: SubjectService,
-              private router: Router) {
-    this.mage = this.getHero('fire_wizard');
-    this.fallen = this.getHero('fallen_king');
+
+  @HostListener('window:resize', ['$event'])
+  // tslint:disable-next-line:typedef
+  onResize(event) {
+    this.innerWidth = event.target.innerWidth;
+    this.innerHeight = event.target.innerHeight;
+    this.setRatio();
+    console.log(this.ratio);
+  }
+
+  // tslint:disable-next-line:typedef
+  private setRatio() {
+    const r = this.innerWidth / this.innerHeight;
+    const ratioFactor = parseFloat(String(Math.round(this.innerWidth / this.innerHeight * 10) / 10));
+    console.log(r + '  ' + ratioFactor)
+    this.isLargeScreen = ratioFactor > 1.0;
+    this.tiles = this.isLargeScreen ? this.bigTiles : this.smallTiles;
+    this.ratio = this.isLargeScreen ? ratioFactor + ':1.0' : '1.0 :' + 1 / ratioFactor;
   }
 
   // tslint:disable-next-line:typedef
@@ -123,7 +164,7 @@ export class HomeComponent {
 
 // tslint:disable-next-line:typedef
   animate(num: number) {
-    if (num === 1) {
+    if (num === (this.tiles.length - 2)) {
       if (this.mageAnimationActive) {
         this.animation_turn_off(num);
         this.destroy_animation();
@@ -136,7 +177,7 @@ export class HomeComponent {
           this.animation_turn_on(num);
         }
       }
-    } else if (num === 2) {
+    } else if (num === (this.tiles.length - 1)) {
       if (this.fallenAnimationActive) {
         this.animation_turn_off(num);
         this.destroy_animation();
@@ -175,12 +216,12 @@ export class HomeComponent {
 // tslint:disable-next-line:typedef
   animation_turn_on(num: number) {
     let show;
-    show = this.el.nativeElement.querySelector('#tile_3');
-    this.scroll('tile_3');
-    if (num === 1) {
+    show = this.el.nativeElement.querySelector('#animationGIF');
+    this.scroll('animationGIF');
+    if (num === (this.tiles.length - 2)) {
       this.fallenAnimationActive = false;
       this.mageAnimationActive = true;
-    } else if (num === 2) {
+    } else if (num === (this.tiles.length - 1)) {
       this.mageAnimationActive = false;
       this.fallenAnimationActive = true;
     }
@@ -194,10 +235,10 @@ export class HomeComponent {
 
 // tslint:disable-next-line:typedef
   animation_turn_off(num: number) {
-    const hide = this.el.nativeElement.querySelector('#tile_3');
-    if (num === 1) {
+    const hide = this.el.nativeElement.querySelector('#animationGIF');
+    if (num === (this.tiles.length - 2)) {
       this.mageAnimationActive = false;
-    } else if (num === 2) {
+    } else if (num === (this.tiles.length - 1)) {
       this.fallenAnimationActive = false;
     }
     const showTile = 'show_tile1';
@@ -221,6 +262,15 @@ export class HomeComponent {
     this.router.navigate(['download']);
   }
 
+  // tslint:disable-next-line:typedef
+  getSpinner() {
+    return APP_CONSTANTS.SPINNER;
+  }
+
+  ngAfterViewChecked(): void {
+    this.spinner.hide(this.getSpinner());
+    this.loaded = true;
+  }
 
 }
 

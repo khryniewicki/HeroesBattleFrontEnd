@@ -35,7 +35,7 @@ export class AnimationComponent implements OnInit {
 
   ngOnInit(): void {
     this.bgImage = ' url(' + this.getBubbleBg(this.hero) + ')';
-    const elementById = document.getElementById('tile_3');
+    const elementById = document.getElementById('animationGIF');
     elementById.setAttribute('style', 'background-image:' + this.bgImage);
   }
 

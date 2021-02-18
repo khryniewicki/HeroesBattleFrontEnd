@@ -9,17 +9,19 @@ import {AuthguardService} from './auth/authguard.service';
 import {RedirectComponent} from './redirect/redirect.component';
 import {RoleguardService} from './auth/roleguard.service';
 import {GameSettingsPanelComponent} from './game-settings-panel/game-settings-panel.component';
+import {DetailsComponent} from './details/details.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'home', pathMatch: 'full'},
   {path: 'home', component: HomeComponent},
   {path: 'game', component: GameComponent},
+  {path: 'game-details', component: DetailsComponent, canActivate: [AuthguardService]},
   {path: 'server', component: ServerComponent},
   {path: 'web', component: WebComponent},
   {path: 'redirect', component: RedirectComponent},
-  {path: 'download', component: DownloadComponent, canActivate: [ AuthguardService], runGuardsAndResolvers: 'always'},
-  {path: 'game-settings-panel', component: GameSettingsPanelComponent, canActivate: [ RoleguardService], runGuardsAndResolvers: 'always'},
-   // {path: '**', redirectTo: 'home'},
+  {path: 'download', component: DownloadComponent, canActivate: [AuthguardService], runGuardsAndResolvers: 'always'},
+  {path: 'game-settings-panel', component: GameSettingsPanelComponent, canActivate: [RoleguardService], runGuardsAndResolvers: 'always'},
+  // {path: '**', redirectTo: 'home'},
 ];
 
 @NgModule({
@@ -30,5 +32,5 @@ const routes: Routes = [
 export class AppRoutingModule {
 }
 
-export const routingComponents = [HomeComponent, GameComponent, ServerComponent, WebComponent,  RedirectComponent,
+export const routingComponents = [HomeComponent, GameComponent, ServerComponent, WebComponent, RedirectComponent,
   DownloadComponent];

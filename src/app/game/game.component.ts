@@ -1,36 +1,15 @@
-import {Component, OnInit, ViewEncapsulation} from '@angular/core';
-import {Tile} from '../home/home.component';
+import {Component} from '@angular/core';
 
 @Component({
   selector: 'app-game',
   templateUrl: './game.component.html',
   styleUrls: ['./game.component.scss']
 })
-export class GameComponent implements OnInit {
-  encapsulation: ViewEncapsulation.None;
-
-  bubbles7 = 'assets/bg/bubbles7.png';
-  bubbles8 = 'assets/bg/bubbles11.png';
+export class GameComponent  {
   bubbles9 = 'url(assets/bg/bubbles2.png)';
-  bubbles10 = 'url(assets/bg/bubbles10.png)';
-  bubbles11 = 'assets/bg/bubbles10.png';
-  // tslint:disable-next-line:typedef
-
-  tiles: Tile[] = [
-    {cols: 4, rows: 3, color: 'black', bg: ' url(' + this.bubbles9 + ')', class: ''},
-    // {cols: 2, rows: 3, color: 'black', bg: ' url(' + this.bubbles7 + ')', class: 'tile'},
-    // {cols: 2, rows: 3, color: 'black', bg: ' url(' + this.bubbles8 + ')', class: 'tile'},
-    // {cols: 2, rows: 3, color: 'black', bg: ' url(' + this.bubbles10 + ')', class: 'tile3'},
-    // {cols: 2, rows: 3, color: 'black', bg: ' url(' + this.bubbles11 + ')', class: 'tile'},
-
-  ];
 
   constructor() {
   }
-
-  ngOnInit(): void {
-  }
-
 
   scroll(id): void {
     try {

@@ -1,9 +1,7 @@
 <!--[style.background-image]="bgImage"-->
-<div id="tile_3" class="hide_tile1" [style.background-image]="bgImage ? bgImage :bgImageDefault">
+<div id="animationGIF" class="hide_tile1" [style.background-image]="bgImage ? bgImage :bgImageDefault">
   <mat-card class="card_gif ">
     <p *ngIf="hero">{{hero}}</p>
-
-
     <vg-player class="animation" (onPlayerReady)="onPlayerReady($event)">
       <video #media [vgMedia]="media" id="singleVideo2" preload="auto" crossorigin>
         <source *ngIf="hero" src="{{'/assets/video/'+hero+'.mp4'}}" type="video/mp4">

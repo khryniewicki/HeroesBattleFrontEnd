@@ -1,49 +1,60 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, HostListener, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
+import {NgxSpinnerService} from 'ngx-spinner';
 
 @Component({
   selector: 'app-redirect',
   template: `
-    <div class="center">
-      <h1 class="inner">{{'redirecting' | translate}}</h1>
-      <br>
-      <mat-spinner class="mat-warn inner2"></mat-spinner>
-    </div>
+
+    <ngx-spinner bdColor="rgba(0, 0, 0, 0.9)" class="spinner" color="#fff" [size]="size" type="pacman" [fullScreen]="true"><h2
+      style="color: white; padding: 0"> {{redirecting | translate}} <br> {{'redirectingWait' | translate}} </h2></ngx-spinner>
+
   `,
   styles: [`
-    .center {
-      color: #3f474e;
-      height: calc(100vh - 20px);
-      position: relative;
+    h2{
+      margin-top: 50px;
     }
-    .inner{
-      color: gray;
-      padding: 12px;
-      position: absolute;
-      top: 30%;
-      left: 50%;
-      transform: translate(-50%, -50%);
+    @media screen and (max-width: 800px) {
+      h2 {
+        font-size: 1vh;
+        line-height: 1.6;
+      }
     }
-    .inner2{
-      color: gray;
-      padding: 12px;
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-    }
-  `]
+  `
+  ]
 })
 export class RedirectComponent implements OnInit {
   active;
-  start;
+  redirecting;
+  size;
 
-  constructor(private activatedRoute: ActivatedRoute, private router: Router) {
+  @HostListener('window:resize', ['$event'])
+  // tslint:disable-next-line:typedef
+  onResize(event) {
+    const width = event.target.innerWidth;
+    console.log(width);
+    this.getSize(width);
+  }
+
+
+  constructor(private activatedRoute: ActivatedRoute, private router: Router, private spinner: NgxSpinnerService) {
     this.active = this.activatedRoute.snapshot;
+    this.redirecting = 'redirecting';
   }
 
   ngOnInit(): void {
+    this.spinner.show();
     this.isActive();
+    this.getSize(window.innerWidth);
+  }
+
+  // tslint:disable-next-line:typedef
+  private getSize(width: number) {
+    if (+width < 800) {
+      this.size = 'small';
+    } else {
+      this.size = 'medium';
+    }
   }
 
   // tslint:disable-next-line:typedef
@@ -51,9 +62,15 @@ export class RedirectComponent implements OnInit {
     let x = 0;
     const intervalID = setInterval(() => {
       if (++x === 4) {
-        this.router.navigate(['home']);
-        window.clearInterval(intervalID);
+        this.redirecting = 'redirecting2';
+        setTimeout(() => {
+          this.spinner.hide();
+          this.router.navigate(['home']);
+          window.clearInterval(intervalID);
+        }, 1500);
       }
     }, 1000);
   }
+
+
 }

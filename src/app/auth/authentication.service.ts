@@ -21,7 +21,7 @@ export class AuthenticationService {
   // public resourceHost = 'http://localhost:8445';
   public resourceHost = 'https://heroes-battle-res.khryniewicki.pl';
   // public localHost = 'http://localhost:4200';
-   public localHost = 'https://heroes-battle.khryniewicki.pl/';
+    public localHost = 'https://heroes-battle.khryniewicki.pl/';
 
   public authServerUrl = this.authHost + '/auth/realms/heroes_battle/protocol';
   private resourceServerUrl = this.resourceHost + '/resource-server';
@@ -46,6 +46,7 @@ export class AuthenticationService {
     params.append('grant_type', 'authorization_code');
     params.append('client_id', this.clientId);
     params.append('client_secret', '913dffb6-2d67-4863-a2ee-02f0d4a39113');
+    // params.append('client_session_state', '913dffb6-2d67-4863-a2ee-02f0d4a39113');
     params.append('redirect_uri', this.localHost);
     params.append('code', code);
 

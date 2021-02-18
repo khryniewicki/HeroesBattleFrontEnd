@@ -1,4 +1,7 @@
-
+.img{
+  background-repeat: no-repeat !important;
+  background-size: cover !important;
+}
 .mat-expansion-panel-header{
   height: 80px;
   color: black;
@@ -16,4 +19,23 @@
   margin-right: auto;
   width: 40%;
 }
-
+.mat-expansion-panel-header{
+  max-height: 65px!important;
+}
+@media screen and (max-width: 800px) {
+  .longtext{font-size: 1.2vh!important;}
+  h3{
+    font-size: 1.6vh;
+    line-height: 1.5;
+    margin: 0;
+  }
+  .mat-expansion-panel-header{
+    max-height: 50px;
+  }
+  ul {
+    font-size: 1.6vh;
+  }
+  ul li{
+    font-size: 1.3vh;
+  }
+}

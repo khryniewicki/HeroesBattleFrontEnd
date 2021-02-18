@@ -1,120 +1,136 @@
-<div class="container-fluid py-1  px-0 m-0 background_black" id="start">
-  <mat-grid-list cols="4" rowHeight="200px">
-    <mat-grid-tile *ngFor="let tile of tiles; index as i"
-                   [colspan]="tile.cols"
-                   [rowspan]="tile.rows"
-                   [style.background]="tile.color"
-                   [style.background-image]="tile.bg"
-                   [attr.id]="'tile_'+i"
-                   [ngClass]="tile.class">
-      <ng-container *ngIf="i==0">
-        <vg-player [style.background-image]=tile.bg>
-          <vg-controls style="max-width: 70%;  left: 14.95%; ">
-            <vg-play-pause></vg-play-pause>
-            <vg-playback-button></vg-playback-button>
+<ng-container *ngIf="loaded; else spinner">
+  <div class="container-fluid py-1  px-0 m-0 background_black" id="start">
+    <mat-grid-list class="largeScreen" cols="4" [rowHeight]=ratio>
+      <mat-grid-tile *ngFor="let tile of tiles; index as i"
+                     [colspan]="tile.cols"
+                     [rowspan]="tile.rows"
+                     [style.background]="tile.color"
+                     [style.background-image]="tile.bg"
+                     [attr.id]="'tile_'+i"
+                     [ngClass]="tile.class">
+        <ng-container *ngIf="!isLargeScreen && i==0">
+          <ng-container *ngTemplateOutlet="fronttext"></ng-container>
+        </ng-container>
+        <ng-container *ngIf="i==(tiles.length-3)">
+          <vg-player>
+            <vg-controls class="controls">
+              <vg-play-pause></vg-play-pause>
+              <vg-playback-button></vg-playback-button>
+              <vg-time-display vgProperty="current" vgFormat="mm:ss"></vg-time-display>
+              <vg-scrub-bar>
+                <vg-scrub-bar-current-time></vg-scrub-bar-current-time>
+                <vg-scrub-bar-buffering-time></vg-scrub-bar-buffering-time>
+              </vg-scrub-bar>
+              <vg-time-display vgProperty="total" vgFormat="mm:ss"></vg-time-display>
+              <vg-mute></vg-mute>
+              <vg-volume></vg-volume>
+              <vg-fullscreen></vg-fullscreen>
+            </vg-controls>
+            <video #media [vgMedia]="media" id="singleVideo" preload="auto" crossorigin>
+              <source src="/assets/video/intro.mp4" type="video/mp4">
+            </video>
+          </vg-player>
+          <ng-container *ngIf="!isLargeScreen; else fronttext"></ng-container>
+        </ng-container>
 
-            <vg-time-display vgProperty="current" vgFormat="mm:ss"></vg-time-display>
+        <ng-container *ngIf="i==(tiles.length-2)">
+          <div class="insideTile ">
+            <div class="title_group ">
+              <div class="d-inline-block my-2">
+                <img class="img_mage" src="{{'/assets/img/'+mage.name+'.png'}}" alt="mage">
+                <p class="title3 d-inline"> {{'Game_mage_title' | translate}} </p>
+              </div>
+              <span class="spacer2 d-inline-block"></span>
+              <div class="btn-group d-inline-block" role="group" aria-label="Basic example">
+                <button type="button" class="btn buttons" (click)="edit('fire_wizard')">Fire Mage</button>
+                <button type="button" class="btn buttons" (click)="edit('ice_wizard')">Ice Mage</button>
+                <button type="button" class="btn buttons" (click)="edit('thunder_wizard')">Thunder Mage</button>
+              </div>
+            </div>
 
-            <vg-scrub-bar>
-              <vg-scrub-bar-current-time></vg-scrub-bar-current-time>
-              <vg-scrub-bar-buffering-time></vg-scrub-bar-buffering-time>
-            </vg-scrub-bar>
+            <div>
+              <h4 class="sub-text"> {{'Game_mage_description' | translate}}</h4>
 
-            <vg-time-display vgProperty="total" vgFormat="mm:ss"></vg-time-display>
-
-            <vg-mute></vg-mute>
-            <vg-volume></vg-volume>
-
-            <vg-fullscreen></vg-fullscreen>
-          </vg-controls>
-
-          <video #media [vgMedia]="media" id="singleVideo" preload="auto" crossorigin>
-            <source src="/assets/video/intro.mp4" type="video/mp4">
-          </video>
-        </vg-player>
-        <div class="first_tile_text position1">
-          <div>
-            <p class="title"> Heroes Battle </p>
-            <h3 class="sub-text">{{'bubble_subtitles' | translate}} </h3>
-            <br>
-            <button mat-raised-button class=" btn_download "
-                    (click)="move_to_download()"> {{'button_download' | translate}} </button>
-          </div>
-        </div>
-      </ng-container>
-
-      <ng-container *ngIf="i==1">
-        <div class="insideTile ">
-          <img class="img_hero img_mage " src="{{'/assets/img/'+mage.name+'.png'}}" alt="mage">
-
-          <div class="title_group">
-
-            <p class="title2 d-inline"> {{'Game_mage_title' | translate}} </p>
-            <span class="spacer2"></span>
-            <mat-button-toggle-group name="fontStyle" aria-label="Font Style">
-              <mat-button-toggle class="btn-hero " (click)="edit('fire_wizard')">Fire Mage</mat-button-toggle>
-              <mat-button-toggle class="btn-hero" (click)="edit('ice_wizard')">Ice Mage</mat-button-toggle>
-              <mat-button-toggle class="btn-hero" (click)="edit('thunder_wizard')">Thunder Mage</mat-button-toggle>
-            </mat-button-toggle-group>
-          </div>
-
-          <h4 class="sub-text "> {{'Game_mage_description' | translate}}</h4>
-          <div>
               <table class="table table-sm table-borderless describtion3 sub-text">
-                <tr ><td colspan="2"> {{mage.prettyName + ('usesSpell' | translate)  }}</td></tr>
                 <tr>
-                  <td style="width: 3%"><img class="img_spell" src="{{'/assets/spells/'+mage.basicSpellImage+'.png'}}" alt="spell"></td>
+                  <td colspan="2"> {{mage.prettyName + ('usesSpell' | translate)  }}</td>
+                </tr>
+                <tr>
+                  <td style="width: 3%"><img class="img_spell" src="{{'/assets/spells/'+mage.basicSpellImage+'.png'}}"
+                                             alt="spell"></td>
                   <td>{{('basicSpell' | translate) + '\'' + mage.basicSpell + '\''}}</td>
                 </tr>
                 <tr>
-                  <td><img class="img_spell" src="{{'/assets/spells/'+mage.ultimateSpellImage+'.png'}}" alt="spell"></td>
+                  <td><img class="img_spell" src="{{'/assets/spells/'+mage.ultimateSpellImage+'.png'}}" alt="spell">
+                  </td>
                   <td> {{('ultimateSpell' | translate) + '\'' + mage.ultimateSpell + '\''}}</td>
                 </tr>
               </table>
-            <button mat-raised-button class="describtion2 btn_animation"
-                    (click)="animate(i);"> {{(!mageAnimationActive ? 'button_show_animation' : 'button_hide_animation') | translate }}</button>
+              <button mat-raised-button class="describtion2 btn_animation"
+                      (click)="animate(i);"> {{(!mageAnimationActive ? 'button_show_animation' : 'button_hide_animation') | translate }}</button>
+            </div>
+
           </div>
+        </ng-container>
 
-        </div>
-      </ng-container>
+        <ng-container *ngIf="i==(tiles.length-1)">
+          <div class="insideTile ">
+            <div class="title_group">
+              <div class="d-inline-block">
+                <img class="img_fallen" src="{{'/assets/img/'+fallen.name+'.png'}}" alt="fallen">
+                <p class="title2 d-inline"> {{'Game_fallen_title' | translate}} </p>
+              </div>
+              <span class="spacer2 d-inline-block"></span>
+              <div class="btn-group d-inline-block" role="group" aria-label="Basic example">
+                <button type="button" class="btn buttons" (click)="edit2('fallen_king')">Fallen King</button>
+                <button type="button" class="btn buttons" (click)="edit2('fallen_monk')">Fallen Monk</button>
+                <button type="button" class="btn buttons" (click)="edit2('fallen_witcher')">Fallen Witcher</button>
+              </div>
+            </div>
 
-      <ng-container *ngIf="i==2">
-        <div class="insideTile ">
-          <img class="img_hero img_fallen" src="{{'/assets/img/'+fallen.name+'.png'}}" alt="fallen">
+            <div>
+              <h4 class="sub-text"> {{'Game_fallen_description' | translate}}</h4>
 
-          <div class="title_group">
-            <p class="title2 d-inline"> {{'Game_fallen_title' | translate}} </p>
-            <span class="spacer2"></span>
-            <mat-button-toggle-group class="position2 " name="fontStyle" aria-label="Font Style">
-              <mat-button-toggle class="btn-hero " (click)="edit2('fallen_king')">Fallen King</mat-button-toggle>
-              <mat-button-toggle class="btn-hero" (click)="edit2('fallen_monk')">Fallen Monk</mat-button-toggle>
-              <mat-button-toggle class="btn-hero" (click)="edit2('fallen_witcher')">Fallen Witcher</mat-button-toggle>
-            </mat-button-toggle-group>
+              <table class="table table-sm table-borderless describtion3 sub-text">
+                <tr>
+                  <td colspan="2"> {{fallen.prettyName + ('usesSpell' | translate)  }}</td>
+                </tr>
+                <tr>
+                  <td style="width: 3%"><img class="img_spell" src="{{'/assets/spells/'+fallen.basicSpellImage+'.png'}}"
+                                             alt="spell"></td>
+                  <td>{{('basicSpell' | translate) + '\'' + fallen.basicSpell + '\''}}</td>
+                </tr>
+                <tr>
+                  <td><img class="img_spell" src="{{'/assets/spells/'+fallen.ultimateSpellImage+'.png'}}" alt="spell">
+                  </td>
+                  <td> {{('ultimateSpell' | translate) + '\'' + fallen.ultimateSpell + '\''}}</td>
+                </tr>
+              </table>
+              <button mat-raised-button class="describtion2  btn_animation"
+                      (click)="animate(i);"> {{(!fallenAnimationActive ? 'button_show_animation' : 'button_hide_animation') | translate }}</button>
+            </div>
           </div>
-
-          <h4 class="sub-text"> {{'Game_fallen_description' | translate}}</h4>
-
-          <div>
-            <table class="table table-sm table-borderless describtion3 sub-text">
-              <tr ><td colspan="2"> {{fallen.prettyName + ('usesSpell' | translate)  }}</td></tr>
-              <tr>
-                <td style="width: 3%"><img class="img_spell" src="{{'/assets/spells/'+fallen.basicSpellImage+'.png'}}" alt="spell"></td>
-                <td>{{('basicSpell' | translate) + '\'' + fallen.basicSpell + '\''}}</td>
-              </tr>
-              <tr>
-                <td><img class="img_spell" src="{{'/assets/spells/'+fallen.ultimateSpellImage+'.png'}}" alt="spell"></td>
-                <td> {{('ultimateSpell' | translate) + '\'' + fallen.ultimateSpell + '\''}}</td>
-              </tr>
-            </table>
-            <button mat-raised-button class="describtion2  btn_animation"
-                    (click)="animate(i);"> {{(!fallenAnimationActive ? 'button_show_animation' : 'button_hide_animation') | translate }}</button>
-          </div>
-        </div>
-      </ng-container>
-    </mat-grid-tile>
-  </mat-grid-list>
-  <div id="animation_wrapper">
-    <div id="parent" #parent></div>
+        </ng-container>
+      </mat-grid-tile>
+    </mat-grid-list>
+    <div id="animation_wrapper">
+      <div id="parent" #parent></div>
+    </div>
   </div>
-</div>
 
+  <ng-template #fronttext>
+    <div class="" [ngClass]="{'first_tile_text' : isLargeScreen, 'first_tile_text_small': !isLargeScreen}">
+      <div>
+        <p class="title"> Heroes Battle </p>
+        <h3 class="sub-text">{{'bubble_subtitles' | translate}} </h3>
+        <br>
+        <button mat-raised-button class=" btn_download "
+                (click)="move_to_download()"> {{'button_download' | translate}} </button>
+      </div>
+    </div>
+  </ng-template>
+</ng-container>
+<ng-template #spinner>
+  <ngx-spinner [name]="getSpinner()" bdColor="rgba(0,0,0,0.9)" size="medium" color="#ffffff" type="pacman"
+               [fullScreen]="true"><p style="color: white"> {{'Loading' | translate}} </p></ngx-spinner>
+</ng-template>

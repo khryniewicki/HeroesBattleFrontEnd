@@ -1,8 +1,5 @@
 <app-navbar></app-navbar>
-<div *ngIf="isReady; else loading">
+
   <router-outlet></router-outlet>
-</div>
-<ng-template #loading>
-  <ngx-spinner bdColor="rgba(0,0,0,0.9)" size="medium" color="#ffffff" type="pacman" [fullScreen]="true"><p
-    style="color: white"> {{'Loading' | translate}} </p></ngx-spinner>
-</ng-template>
+
+
