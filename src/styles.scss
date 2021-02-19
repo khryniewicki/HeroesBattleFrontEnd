@@ -61,6 +61,7 @@ mat-sidenav-container {
 }
 
 .sidenav-container {
+  position: relative;
   height: 100%;
 }
 .background_black{
@@ -70,6 +71,7 @@ mat-sidenav-container {
   width: 200px;
   box-shadow: 3px 0 6px rgba(0, 0, 0, .24);
   min-height: 100%;
+  z-index: 999!important;
 }
 
 mat-toolbar a {

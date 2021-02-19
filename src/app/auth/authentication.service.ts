@@ -16,12 +16,12 @@ export class Authentication {
   providedIn: 'root'
 })
 export class AuthenticationService {
-  // public authHost = 'http://localhost:8085';
-  public authHost = 'https://heroes-battle-auth.khryniewicki.pl';
+   // public authHost = 'http://localhost:8080';
+   public authHost = 'https://heroes-battle-auth.khryniewicki.pl';
   // public resourceHost = 'http://localhost:8445';
   public resourceHost = 'https://heroes-battle-res.khryniewicki.pl';
-  // public localHost = 'http://localhost:4200';
-    public localHost = 'https://heroes-battle.khryniewicki.pl/';
+   public localHost = 'http://localhost:4200';
+  // public localHost = 'https://heroes-battle.khryniewicki.pl/';
 
   public authServerUrl = this.authHost + '/auth/realms/heroes_battle/protocol';
   private resourceServerUrl = this.resourceHost + '/resource-server';
@@ -45,8 +45,7 @@ export class AuthenticationService {
     const params = new URLSearchParams();
     params.append('grant_type', 'authorization_code');
     params.append('client_id', this.clientId);
-    params.append('client_secret', '913dffb6-2d67-4863-a2ee-02f0d4a39113');
-    // params.append('client_session_state', '913dffb6-2d67-4863-a2ee-02f0d4a39113');
+    params.append('client_secret', '8911ffd3-19d8-471d-8d88-ddd735de6e97');
     params.append('redirect_uri', this.localHost);
     params.append('code', code);
 
@@ -54,6 +53,7 @@ export class AuthenticationService {
     this.http.post(this.authServerUrl + '/openid-connect/token', params.toString(), {headers})
       .subscribe(
         data => {
+          console.log(data);
           this.saveToken(data);
         },
         err => console.log('Invalid Credentials' + err)
@@ -63,6 +63,7 @@ export class AuthenticationService {
   // tslint:disable-next-line:typedef
   saveToken(token) {
     const expireDate = new Date().getTime() + (1000 * token.expires_in);
+    console.log(token);
     Cookie.set('access_token', token.access_token, expireDate);
     Cookie.set('refresh_token', token.refresh_token, expireDate);
     window.location.href = Cookie.get('redirect');
@@ -130,6 +131,10 @@ export class AuthenticationService {
     return this.http.get<Authentication>(this.resourceServerUrl + this.checkRoleUrl, {headers});
   }
 
+  // tslint:disable-next-line:typedef
+  account() {
+    return this.authHost + '/auth/realms/heroes_battle/account/';
+  }
 }
 
 export class ExtendedMessage {

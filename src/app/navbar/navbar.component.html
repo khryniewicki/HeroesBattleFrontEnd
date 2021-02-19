@@ -13,6 +13,7 @@
            (click)="game_panel()">{{'GameSettings' | translate}}</a>
         <a mat-list-item class="pointer  active" (click)="account()">{{'Account' | translate}}</a>
         <a mat-list-item class="pointer  active" (click)="logout()" routerLink="">{{'Log-out' | translate}}</a>
+
       </ng-container>
     </mat-nav-list>
   </mat-sidenav>
@@ -42,7 +43,8 @@
         </div>
         <div class="text-light language">
   <mat-slide-toggle class="size" [(ngModel)]="isChecked"
-                    (change)="switchLang($event)">{{lang}}
+                    (change)="switchLang($event)"><span
+    class="{{ lang == 'PL' ? 'flag-icon flag-icon-squared flag-icon-pl': 'flag-icon flag-icon-gb' }}"></span>
   </mat-slide-toggle>
           </div>
       </span>
@@ -50,7 +52,7 @@
     <mat-toolbar class="shadowBox  background_black text-white ">
       <ng-container class=" navbar-container ">
         <a class="navbar-brand " routerLink="home"> <img src="/assets/icons/logo7.png" id="logo"
-                                               class="d-inline-block align-bottom" alt="">
+                                                         class="d-inline-block align-bottom" alt="">
         </a>
       </ng-container>
       <span class="spacer"></span>

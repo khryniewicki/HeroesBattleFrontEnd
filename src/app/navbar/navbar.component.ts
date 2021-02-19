@@ -116,7 +116,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
 
   // tslint:disable-next-line:typedef
   account() {
-    window.location.href = this.authService.authHost + '/auth/realms/heroes_battle/account/';
+    window.location.href = this.authService.account();
   }
 
   // tslint:disable-next-line:typedef

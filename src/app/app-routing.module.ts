@@ -7,9 +7,9 @@ import {GameComponent} from './game/game.component';
 import {DownloadComponent} from './download/download.component';
 import {AuthguardService} from './auth/authguard.service';
 import {RedirectComponent} from './redirect/redirect.component';
-import {RoleguardService} from './auth/roleguard.service';
 import {GameSettingsPanelComponent} from './game-settings-panel/game-settings-panel.component';
 import {DetailsComponent} from './details/details.component';
+import {RoleguardService} from './auth/roleguard.service';
 
 const routes: Routes = [
   {path: '', redirectTo: 'home', pathMatch: 'full'},
@@ -20,7 +20,9 @@ const routes: Routes = [
   {path: 'web', component: WebComponent},
   {path: 'redirect', component: RedirectComponent},
   {path: 'download', component: DownloadComponent, canActivate: [AuthguardService], runGuardsAndResolvers: 'always'},
-  {path: 'game-settings-panel', component: GameSettingsPanelComponent, canActivate: [RoleguardService], runGuardsAndResolvers: 'always'},
+  {
+    path: 'game-settings-panel', component: GameSettingsPanelComponent, canActivate: [RoleguardService], runGuardsAndResolvers: 'always'
+  },
   // {path: '**', redirectTo: 'home'},
 ];
 
