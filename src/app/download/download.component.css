@@ -6,17 +6,18 @@
   height: 80px;
   color: black;
 }
+.instr{
+  text-align: justify;
+}
 .card_full{
   position: relative;
   width: 100%;
   margin-top: 3%;
   padding-right: 10%;
   padding-left: 10%;
+  line-height: 1.6;
+}
 
-}
-::ng-deep mat-tab-body{
-  z-index: unset!important;
-}
 .img_jdk{
   display: block;
   margin-left: auto;
@@ -24,7 +25,8 @@
   width: 40%;
 }
 .mat-expansion-panel-header{
-  max-height: 65px!important;
+  height: auto;
+  min-height: 65px!important;
 }
 @media screen and (max-width: 800px) {
   .longtext{font-size: 1.2vh!important;}
@@ -41,5 +43,30 @@
   }
   ul li{
     font-size: 1.3vh;
+  }
+  .card_full{
+    width: calc(100% - 200px);
+    margin-top: 3%;
+    padding-right: 10px;
+    padding-left: 10px;
+  }
+  .downloadbtn{
+    padding: 0.5vw 3vw;
+    font-size: 2.2vw;
+    line-height: 6vw;
+  }
+}
+@media screen and (max-width: 500px) {
+  .card_full{
+    width: calc(100% - 100px);
+    margin-top: 3%;
+    padding-right: 10px;
+    padding-left: 10px;
+  }
+
+  .downloadbtn{
+    padding: 0.5vw 2vw;
+    font-size: 1.8vw;
+    line-height: 6vw;
   }
 }

@@ -2,13 +2,12 @@
 
   <mat-tab-group animationDuration="0ms" mat-align-tabs="center">
     <mat-tab label="Windows">
-
       <mat-card class="card_full">
         <br>
-        <h3>{{'Ins_text_1'| translate}}{{'Ins_text_2'| translate}}</h3>
+        <h3 class="instr">{{'Ins_text_1'| translate}}{{'Ins_text_2'| translate}}</h3>
         <br>
         <mat-card-content class="content ">
-          <mat-accordion>
+          <mat-accordion >
             <mat-expansion-panel hideToggle>
               <mat-expansion-panel-header>
                 <mat-panel-title>
@@ -22,7 +21,7 @@
                 <li> {{'Ins_text2_4' | translate}}</li>
               </ul>
               <div class="row">
-                <button mat-raised-button class="mat-primary m-3 btn-sm "
+                <button mat-raised-button class="mat-primary m-3 btn-sm downloadbtn"
                         (click)="downloadResource('heroes_battle_windows.zip')">{{'Ins_text_download' | translate}}
                 </button>
                 <h3 class="mx-3 text-danger my-3">{{'Size' | translate}} 280 MB</h3>
@@ -42,7 +41,7 @@
 
       <mat-card class="card_full">
         <br>
-        <h3>{{'Ins_text_1'| translate}}</h3>
+        <h3 class="instr">{{'Ins_text_1'| translate}}</h3>
         <br>
         <mat-card-content class="content ">
           <mat-accordion>
@@ -55,14 +54,14 @@
                   <h3 class="longtext"> {{'Ins_description_1' |translate}}</h3>
                 </mat-panel-description>
               </mat-expansion-panel-header>
+              <br><br>
 
+              <h3> <b> {{'Ins_title_1'| translate}}  </b></h3><br>
 
-              <b> {{'Ins_title_1'| translate}}  </b><br> <br>
+              <h3>{{'Ins_link'| translate}}  <a href="https://jdk.java.net/java-se-ri/11">{{'Ins_link2'| translate}} </a></h3>
+              <br>
 
-              {{'Ins_link'| translate}}  <a href="https://jdk.java.net/java-se-ri/11">{{'Ins_link2'| translate}} </a>
-              <br> <br>
-
-              <h3>{{'Ins_linux_text1' | translate}} <br><br>
+              <h3>{{'Ins_linux_text1' | translate}} <br>
 
                 {{'Ins_linux_text2' | translate}}
                 <b>{{'Ins_linux_text3' | translate}}</b> {{'Ins_linux_text4' | translate}}<br>
@@ -95,7 +94,7 @@
               </ul>
               <div class="row">
 
-                <button mat-raised-button class="mat-primary m-3 btn-sm "
+                <button mat-raised-button class="mat-primary m-3 btn-sm downloadbtn "
                         (click)="downloadResource('heroes_battle_linux.zip')">
                   {{'Ins_text_download' | translate}}
                 </button>

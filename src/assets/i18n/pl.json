@@ -29,6 +29,7 @@
   "Game8" : ".Zadaniem aplikacji jest przede wszystkim przesyłanie komunikatów w trakcie gry. Aplikacja umożliwia użytkownikom pobranie spakowanej aplikacji klienckiej oraz kontrolę nad opcjami gry poprzez API. Aplikacja serwerowa gry jest również serwerem z zasobami, którego dostęp nadzoruje serwer uwierzytelniania i autoryzacji ",
   "Game9" : "Aplikacja webowa została przygotowana przy pomocy frameworku ",
   "Game10" : "Aplikacja serwerowa oraz webowa zostały umieszczone na serwerze ",
+  "LearnMore": "Dowiedz się więcej",
 
   "redirectingWait": "POCZEKAJ ...",
   "redirecting": "PRZEKIEROWANIE NA SERWER AUTORYZACYJNY, ",

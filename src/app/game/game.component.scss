@@ -9,10 +9,12 @@
   text-align: justify;
   line-height: 1.6;
 }
-.h1{
+
+.h1 {
   font-size: 1.2vw;
 
 }
+
 a {
   color: #ada194
 }
@@ -38,7 +40,7 @@ a:focus, a:hover {
 }
 
 .spring {
-  width:70%;
+  width: 70%;
   object-fit: cover;
 }
 
@@ -94,7 +96,7 @@ a:focus, a:hover {
   .td1 {
     display: none;
   }
-  .below{
+  .below {
     padding-top: 10%;
   }
   .lwjgl {
@@ -132,6 +134,9 @@ a:focus, a:hover {
     left: 40%;
     line-height: 3;
     font-size: 2.0vw;
+  }
+  #firstPage {
+    min-height: 100%;
   }
 }
 

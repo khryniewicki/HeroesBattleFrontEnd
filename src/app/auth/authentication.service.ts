@@ -3,6 +3,7 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Cookie} from 'ng2-cookies';
 import {Observable} from 'rxjs';
 import {Router} from '@angular/router';
+import {SECRET} from '../web/SECRET';
 
 export class Msg {
   'content': string;
@@ -16,15 +17,17 @@ export class Authentication {
   providedIn: 'root'
 })
 export class AuthenticationService {
-   // public authHost = 'http://localhost:8080';
-   public authHost = 'https://heroes-battle-auth.khryniewicki.pl';
+  // public authHost = 'http://localhost:8080';
   // public resourceHost = 'http://localhost:8445';
-  public resourceHost = 'https://heroes-battle-res.khryniewicki.pl';
-   public localHost = 'http://localhost:4200';
-  // public localHost = 'https://heroes-battle.khryniewicki.pl/';
+  // public localHost = 'http://localhost:4200';
 
+  public authHost = 'https://heroes-battle-auth.khryniewicki.pl';
+  public resourceHost = 'https://heroes-battle-res.khryniewicki.pl';
+  public localHost = 'https://heroes-battle.khryniewicki.pl/';
   public authServerUrl = this.authHost + '/auth/realms/heroes_battle/protocol';
+  private authAccountUrl = this.authHost + '/auth/realms/heroes_battle/account/';
   private resourceServerUrl = this.resourceHost + '/resource-server';
+  private openIdUrl = '/openid-connect/token';
   private checkRoleUrl = '/api/option/check-role';
   public clientId = 'login-app';
 
@@ -45,12 +48,12 @@ export class AuthenticationService {
     const params = new URLSearchParams();
     params.append('grant_type', 'authorization_code');
     params.append('client_id', this.clientId);
-    params.append('client_secret', '8911ffd3-19d8-471d-8d88-ddd735de6e97');
+    params.append('client_secret', SECRET.PASSWORD);
     params.append('redirect_uri', this.localHost);
     params.append('code', code);
 
     const headers = new HttpHeaders({'Content-type': 'application/x-www-form-urlencoded; charset=utf-8'});
-    this.http.post(this.authServerUrl + '/openid-connect/token', params.toString(), {headers})
+    this.http.post(this.authServerUrl + this.openIdUrl, params.toString(), {headers})
       .subscribe(
         data => {
           console.log(data);
@@ -63,7 +66,6 @@ export class AuthenticationService {
   // tslint:disable-next-line:typedef
   saveToken(token) {
     const expireDate = new Date().getTime() + (1000 * token.expires_in);
-    console.log(token);
     Cookie.set('access_token', token.access_token, expireDate);
     Cookie.set('refresh_token', token.refresh_token, expireDate);
     window.location.href = Cookie.get('redirect');
@@ -133,7 +135,7 @@ export class AuthenticationService {
 
   // tslint:disable-next-line:typedef
   account() {
-    return this.authHost + '/auth/realms/heroes_battle/account/';
+    return this.authAccountUrl;
   }
 }
 
