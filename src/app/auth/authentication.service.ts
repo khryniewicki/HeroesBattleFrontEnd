@@ -51,7 +51,6 @@ export class AuthenticationService {
     params.append('client_secret', SECRET.PASSWORD);
     params.append('redirect_uri', this.localHost);
     params.append('code', code);
-
     const headers = new HttpHeaders({'Content-type': 'application/x-www-form-urlencoded; charset=utf-8'});
     this.http.post(this.authServerUrl + this.openIdUrl, params.toString(), {headers})
       .subscribe(
