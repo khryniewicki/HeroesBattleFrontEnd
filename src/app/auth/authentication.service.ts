@@ -42,7 +42,6 @@ export class AuthenticationService {
       Authorization: 'Bearer ' + Cookie.get('access_token')
     });
   }
-
   // tslint:disable-next-line:typedef
   retrieveToken(code) {
     const params = new URLSearchParams();
