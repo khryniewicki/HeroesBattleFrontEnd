@@ -8,10 +8,11 @@ Głowne funckjonalności aplikacji:
 - [x] dwujęzyczność (polski/angielski)
 - [x] chroniony dostęp stron poprzez 'AuthGuard' oraz 'RoleGuard'
   
-  
+
 Stronę można sprawdzić pod adresem:
-/
+\
 https://heroes-battle.khryniewicki.pl
+ 
 ----
 
 ### HeroesBattleFrontEnd
@@ -25,5 +26,5 @@ Application main functionalities:
 - [x] protected site access via 'AuthGuard' and 'RoleGuard'
 
 The website can be checked at:
-/
+\
 https://heroes-battle.khryniewicki.pl
