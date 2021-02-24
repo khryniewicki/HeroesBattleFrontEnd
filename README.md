@@ -1,6 +1,6 @@
 ### Heroes Battle Frontend [PL]
 
-Heroes Battle FrontEnd to aplikacja webowa gry Heroes Battle. Aplikacja została przygotowana przy pomocy Angular CLI wersja 10.1.4.
+***Heroes Battle Frontend*** to aplikacja webowa gry Heroes Battle. Aplikacja została przygotowana przy pomocy Angular CLI wersja 10.1.4.
 
 Głowne funckjonalności aplikacji: 
 - [x] cachowanie danych
@@ -11,13 +11,14 @@ Głowne funckjonalności aplikacji:
 
 Stronę można sprawdzić pod adresem:
 \
-https://heroes-battle.khryniewicki.pl
+`<link>` : https://heroes-battle.khryniewicki.pl
  
+ > Heroes Battle to gra 2D, która umożliwia grę zdalnie z innymi graczami w czasie rzeczywistym.  
 ----
 
 ### Heroes Battle Frontend [ENG]
 
-Heroes Battle FrontEnd is the Heroes Battle game web application. The application was prepared with the help of Angular CLI version 10.1.4.
+***Heroes Battle Frontend*** is the Heroes Battle game web application. The application was prepared with the help of Angular CLI version 10.1.4.
 
 Application main functionalities:
 - [x] data caching
@@ -27,4 +28,6 @@ Application main functionalities:
 
 The website can be checked at:
 \
-https://heroes-battle.khryniewicki.pl
+`<link>` : https://heroes-battle.khryniewicki.pl
+
+> Heroes Battle is a 2D game that allows you to play remotely with other players in real time.
